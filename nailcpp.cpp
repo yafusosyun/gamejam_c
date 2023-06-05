@@ -1,5 +1,5 @@
 #include<DxLib.h>
-#include<stdlib.h>
+#include<stdio.h>
 
 
 
@@ -19,7 +19,7 @@ int nailimag;
 int LoadImages(void)
 {
 	//タイトル画像の読込
-	nailimag = LoadGraph("images/nail1");
+	nailimag = LoadGraph("images/ringo");
 
 	return 0;
 }
@@ -32,40 +32,26 @@ void nail(void);//釘のシステム
 /********************
 プログラムの開始
 ***************************/
-int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In_ int ii)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	// ウィンドウモードで起動
-	if (ChangeWindowMode(TRUE) != DX_CHANGESCREEN_OK)
-	{
-		return -1;
-	}
+    int a;
 
-	//画像読込関数の呼び出し
-	if (LoadImages() == -1);
+    if (DxLib_Init() == -1)        // ＤＸライブラリ初期化処理
+    {
+        return -1;        // エラーが起きたら直ちに終了
+    }
+
+    // test1.bmpの読み込み
+     LoadGraph("images/ringo");
+
+    // 読みこんだグラフィックを画面左上に描画
+    DrawGraph(100, 100, nailimag, TRUE);
 
 
-	// 画面サイズを変更
-	if (SetGraphMode(_SCREEN_WIDHT_, _SCREEN_HEIGHT_, _SCREEN_COLOR_BIT_32_) != DX_CHANGESCREEN_OK)
-	{
-		return -1;
-	}
 
-	// DXライブラリの初期化
-	if (DxLib_Init() == -1)
-	{
-		return -1;
-	}
+    WaitKey();        // 結果を見るためにキー待ち(『WaitKey』を使用)
 
-}
+    DxLib_End();        // ＤＸライブラリ使用の終了処理
 
-/*******************
-釘のシステム
-*********************/
-void nail(void)
-{
-	int b;
-
-	scanf_s("%d", &b);
-
-	printf("aaaa");
+    return 0;        // ソフトの終了
 }
