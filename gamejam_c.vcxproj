@@ -151,12 +151,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PadInput.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Timing.cpp" />
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractScene.h" />
+    <ClInclude Include="PadInput.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Timing.h" />
     <ClInclude Include="UI.h" />
-
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="Retult.cpp" />
     <ClCompile Include="ソース.cpp" />
@@ -164,7 +170,6 @@
   <ItemGroup>
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Result.h" />
-
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

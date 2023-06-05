@@ -1,4 +1,7 @@
 #include "DxLib.h"
+#include "SceneManager.h"
+#include "Timing.h"
+
 
 #define _SCREEN_HEIGHT_ 720
 #define _SCREEN_WIDHT_	1280
@@ -25,7 +28,7 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		return -1;
 	}
 
-	SceneManager sceneMng(dynamic_cast<AbstractScane*>(new Input()));
+	SceneManager sceneMng(dynamic_cast<AbstractScene*>(new Timing()));
 
 	while (sceneMng.Update() != nullptr && ProcessMessage() != -1)
 	{
