@@ -11,7 +11,7 @@
 /***********************************
 *　変数の宣言（クローバル変数）
 ************************************/
-int nailimag;
+int nailimg;
 
 /***********************************
 * 画像読込
@@ -19,39 +19,63 @@ int nailimag;
 int LoadImages(void)
 {
 	//タイトル画像の読込
-	nailimag = LoadGraph("images/ringo");
+	nailimg = LoadGraph("images/ringo.png");
 
 	return 0;
 }
 /*******************
 関数宣言
 *************************/
-void nail(void);//釘のシステム	
+/*void nail(void);*///釘のシステム	
 
 
 /********************
 プログラムの開始
 ***************************/
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hprevInstance, _In_ LPSTR lpCmdLine, _In_
+	int nCmdShow)
 {
-    int a;
+  
+	ChangeWindowMode(TRUE); // ウィンドウモード設定
+	if (DxLib_Init() == -1) return -1; // DXライブラリ初期化処理
 
-    if (DxLib_Init() == -1)        // ＤＸライブラリ初期化処理
-    {
-        return -1;        // エラーが起きたら直ちに終了
-    }
+	// test1.bmp の読み込み
+	nailimg = LoadGraph("images/ringo.png");
 
-    // test1.bmpの読み込み
-     LoadGraph("images/ringo");
+	int b = 0;
 
-    // 読みこんだグラフィックを画面左上に描画
-    DrawGraph(100, 100, nailimag, TRUE);
+	if (b ==0) DrawGraph(0, 0, nailimg, TRUE);
 
 
 
-    WaitKey();        // 結果を見るためにキー待ち(『WaitKey』を使用)
+	WaitKey(); // 結果を見るためにキー待ち
+	
 
-    DxLib_End();        // ＤＸライブラリ使用の終了処理
-
-    return 0;        // ソフトの終了
+	DxLib_End(); // DXライブラリ使用の終了処理
+	return 0; // ソフトの終了
 }
+
+/**********************************
+釘のシステム
+*****************************/
+//void nail(void)
+//{
+//	int b;
+//	scanf_s("%d", &b);
+//
+//	switch (b) {
+//	case 0:
+//		DrawGraph(0, 0, nailimg, FALSE);
+//
+//		break;
+//	case 1:
+//
+//		break;
+//	case 2:
+//
+//		break;
+//	case 3:
+//
+//		break;
+//	}
+//}

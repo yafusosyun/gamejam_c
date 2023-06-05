@@ -1,3 +1,2 @@
 ﻿  nailcpp.cpp
-C:\Users\KBC12205185\Documents\2023gamejam\gamejam_c\nailcpp.cpp(37,9): warning C4101: 'a': ローカル変数は 1 度も使われていません。
   gamejam_c.vcxproj -> C:\Users\KBC12205185\Documents\2023gamejam\gamejam_c\x64\Debug\gamejam_c.exe
