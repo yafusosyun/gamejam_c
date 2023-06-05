@@ -1,0 +1,4 @@
+﻿  ソース.cpp
+C:\Users\KBC12205185\Documents\2023gamejam\gamejam_c\ソース.cpp(44,25): warning C4390: ';': 制御が空の文が見つかりました。意図した記述でしょうか?
+C:\Users\KBC12205185\Documents\2023gamejam\gamejam_c\ソース.cpp(59): warning C4715: 'WinMain': 値を返さないコントロール パスがあります。
+  gamejam_c.vcxproj -> C:\Users\KBC12205185\Documents\2023gamejam\gamejam_c\x64\Debug\gamejam_c.exe
