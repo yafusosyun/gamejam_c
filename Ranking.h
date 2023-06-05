@@ -10,3 +10,5 @@ struct RankingData                            // ランキングデータ構造体
 void SortRanking(void);  // ランキングの並べ替え
 int SaveRanking(void);   // ランキングデータの保存
 int ReadRanking(void);   // ランキングデータの読込
+
+int LoadRankingImage();                        //ランキング画像読み込み

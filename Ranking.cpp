@@ -2,12 +2,14 @@
 #include"Ranking.h"
 
 #define RANKING_DATA 5    // ランキング上位５人 
-
+int g_RankingImg;   // ランキング画像
 struct RankingData g_Ranking[RANKING_DATA];    // ランキングデータの変数宣言
 
-// ランキング一覧を表示
 void DrawRanking(int key, int& gamemode)
 {
+	// ランキング画像表示
+	DrawGraph(0, 0, g_RankingImg, FALSE);
+	// ランキング一覧を表示
 	SetFontSize(40);
 	for (int i = 0; i < RANKING_DATA; i++)
 	{
@@ -113,3 +115,11 @@ void DrawRanking(int key, int& gamemode)
 
 		return 0;
 	}
+		//ランキング画像読み込み
+		int LoadRankingImage()
+		{
+			// ランキング画像読込
+			if ((g_RankingImg = LoadGraph("images/Ranking/input.png")) == -1) return -1;
+
+			return 0;
+		}

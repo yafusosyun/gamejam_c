@@ -17,6 +17,5 @@ void DrawResult(int key, int& gamemode, int score)
 
 		//スコア表示
 		DrawFormatString(830, 350, 0xff4040, "%d", score);
-		break;
 	}
 }
