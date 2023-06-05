@@ -5,10 +5,12 @@
 int g_RankingImg;   // ランキング画像
 struct RankingData g_Ranking[RANKING_DATA];    // ランキングデータの変数宣言
 
+//ランキング描画
 void DrawRanking(int key, int& gamemode)
 {
 	// ランキング画像表示
 	DrawGraph(0, 0, g_RankingImg, FALSE);
+
 	// ランキング一覧を表示
 	SetFontSize(40);
 	for (int i = 0; i < RANKING_DATA; i++)
