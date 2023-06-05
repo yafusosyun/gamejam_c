@@ -151,7 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="ソース.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Ranking.h" />
+    <ClInclude Include="Result.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
