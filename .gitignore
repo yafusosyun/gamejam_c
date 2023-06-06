@@ -359,3 +359,8 @@ MigrationBackup/
 FodyWeavers.xsd
 .vs/
 
+git rm --cached.vs
+.vs/
+
+git rm --cachedx64
+x64/
