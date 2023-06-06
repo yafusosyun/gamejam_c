@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "SceneManager.h"
 #include "PadInput.h"
+#include "fps.h"
 
 #define _SCREEN_HEIGHT_ 720
 #define _SCREEN_WIDHT_	1280
@@ -21,6 +22,9 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		return -1;
 	}
 
+	//垂直同期を切る
+	//SetWaitVSyncFlag(0);
+
 	// DXライブラリの初期化
 	if (DxLib_Init() == -1)
 	{
@@ -31,13 +35,28 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 
 	while (/*sceneMng.Update() != nullptr &&*/ ProcessMessage() != -1)
 	{
-		PadInput::UpdateKey();
 		ClearDrawScreen();
+		PadInput::UpdateKey();
+		PadInput::StickControl();
+		
+		fps::FpsControll_Update();
+
+		fps::FpsControll_Draw();
 
 		/*sceneMng.Draw();*/
 
+		
+		//下方向
+		if (PadInput::flgY == 0 && PadInput::inputY < -MARGIN) {
+			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
+		}
+		//上方向
+		if (PadInput::flgY == 0 && PadInput::inputY > MARGIN) {
+			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
+		}
+		
+		fps::FpsControll_Wait();
 		ScreenFlip();
-		PadInput::UpdateKey();
 	}
 
 	// DXライブラリの終了処理

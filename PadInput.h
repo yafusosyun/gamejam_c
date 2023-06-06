@@ -18,8 +18,10 @@ private:
     static char nowKey[BUTTONS];    //¡‰ñ‚Ì“ü—ÍƒL[
     static PADSTATE state;
     static XINPUT_STATE Input;
-    static int inputX, inputY;
     static int oldX, oldY;
+
+public:
+    static int inputX, inputY;
     static int flgX, flgY;
 
 private:
