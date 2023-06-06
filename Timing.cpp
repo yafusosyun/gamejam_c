@@ -14,7 +14,8 @@ AbstractScene* Timing::Update() {
 		//0 -> 100
 		if (gauge < 100 && numgaugeflg == true && gaugeflg == true) {
 			gauge += speed;
-			if (gauge >= 100) {
+			if (gauge >= 99) {
+				gauge = 99;
 				numgaugeflg = false;
 			}
 		}
@@ -22,6 +23,7 @@ AbstractScene* Timing::Update() {
 		else if (gauge > 0 && numgaugeflg == false && gaugeflg == true) {
 			gauge -= speed;
 			if (gauge <= 0) {
+				gauge = 0;
 				numgaugeflg = true;
 			}
 		}
