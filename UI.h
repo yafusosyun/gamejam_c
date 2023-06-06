@@ -1,15 +1,14 @@
 #pragma once
-class GameSystem
+class UI
 {
 	mutable int gWaitTime = 6000;
-	mutable int HP = 3;
 	mutable int gScore = 0;
-	mutable int zanki;
-
+	
 public:
 
-	void CountDown() const;
-	void Score() const;
+	void CountDown() const;		//制限時間
+	int Score() ;				//スコア計算
+	void DrawScore();			//スコア表示
 
 	void AddScore(int point) { gScore += point; }
 	int GetTime();

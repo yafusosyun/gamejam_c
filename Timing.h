@@ -7,6 +7,7 @@ class Timing : public AbstractScene {
 private:
 	int timing;
 	int gauge = 0;
+	int speed = 1;
 	bool numgaugeflg = true;
 	bool gaugeflg = true;
 	int tmp = 0;

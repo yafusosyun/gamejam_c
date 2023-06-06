@@ -1,6 +1,7 @@
 #include"DxLib.h"
 #include"timing.h"
 #include"PadInput.h"
+#include "UI.h"
 
 int Timing::judge = -1;
 
@@ -12,25 +13,25 @@ AbstractScene* Timing::Update() {
 	if (PadInput::OnClick(XINPUT_BUTTON_A) == 0) {
 		//0 -> 100
 		if (gauge < 100 && numgaugeflg == true && gaugeflg == true) {
-			gauge++;
+			gauge += speed;
 			if (gauge >= 100) {
 				numgaugeflg = false;
 			}
 		}
 		//100 -> 0
 		else if (gauge > 0 && numgaugeflg == false && gaugeflg == true) {
-			gauge--;
+			gauge -= speed;
 			if (gauge <= 0) {
 				numgaugeflg = true;
 			}
 		}
-
 	}
 	else {
 		tmp = gauge;
 		//50‚ğ’†S‚Æ‚µAŒë·1‚ÂˆÈ“à‚È‚çgreat
 		if (judgepoint - 1 <= tmp && judgepoint + 1 >= tmp) {
 			judge = 2;
+			speed += 1;
 		}
 		//Œë·10ˆÈ“à‚È‚çgood
 		else if (judgepoint - 10 < tmp && judgepoint + 10 > tmp) {
@@ -39,6 +40,9 @@ AbstractScene* Timing::Update() {
 		//‚»‚êˆÈŠO‚È‚çmiss
 		else {
 			judge = 0;
+			if (speed > 1) {
+				speed -= 1;
+			}
 		}
 
 		//ˆÚ“®‚ğ~‚ß‚é
@@ -48,6 +52,7 @@ AbstractScene* Timing::Update() {
 		else if (gaugeflg == false) {
 			gaugeflg = true;
 			judgepoint = GetRand(100);
+			judge = 0;
 			goodleft = ((bar / 100) * judgepoint - 100);
 			if (goodleft < 0) {
 				goodleft = 0;

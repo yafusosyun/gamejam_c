@@ -3,7 +3,7 @@
 
 class GameMain : public AbstractScene {
 private:
-	
+	bool flg = true;
 public:
 	//デスストラクタ
 	virtual ~GameMain() {};
