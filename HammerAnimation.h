@@ -12,18 +12,20 @@ private:
 	float animx, animy, angle; //ハンマーを動かす変数
 
 public:
+	int flg;
+
+public:
 	HammerAnimation()
 	{
-		pox = 500;
-		poy = 300;
 		animx = 0;
 		animy = 0;
 		angle = 0;
+		flg = 0;
 		HammerImage = LoadGraph("C:/Users/sinzato shuto/Pictures/トランプ.jfif");
 	}
 	~HammerAnimation() {};
 
-	void DrawHammer();
+	void DrawHammer(float x, float y);
 
 	void WeakAnimation();      //弱く叩くときのアニメーション
 	void NormalAnimation();    //普通に叩くときのアニメーション

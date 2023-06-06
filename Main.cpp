@@ -42,10 +42,15 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		PadInput::StickControl();
 		
 		fps::FpsControll_Update();
-
 		fps::FpsControll_Draw();
 
-		hammer.DrawHammer();
+		hammer.DrawHammer(500, 300);
+		if (PadInput::OnClick(XINPUT_BUTTON_A)) {
+			hammer.flg = 0;
+		}
+		if (hammer.flg != 2) {
+			hammer.MissAnimation();
+		}
 
 		/*sceneMng.Draw();*/
 

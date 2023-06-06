@@ -1,4 +1,12 @@
 ﻿  HammerAnimation.cpp
-C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(5,2): error C2660: 'DxLib::DrawRotaGraph': 関数に 4 個の引数を指定できません。
-C:\dxlib\DxLib.h(2750,14): message : 'DxLib::DrawRotaGraph' の宣言を確認してください
-C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(5,2): message : 引数リスト '(int, int, int, int)' を一致させようとしているとき
+C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(8,33): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(8,20): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(18,16): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(30,17): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(63,16): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(84,16): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(96,16): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(114,15): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+  Main.cpp
+  コードを生成中...
+  gamejam_c.vcxproj -> C:\Users\sinzato shuto\Desktop\gamejam_c\x64\Debug\gamejam_c.exe
