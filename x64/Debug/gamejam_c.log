@@ -1,2 +1,4 @@
 ﻿  ソース.cpp
+C:\GP\gamejam_c\ソース.cpp(14,12): warning C4101: 'x1': ローカル変数は 1 度も使われていません。
+C:\GP\gamejam_c\ソース.cpp(14,9): warning C4101: 'x0': ローカル変数は 1 度も使われていません。
   gamejam_c.vcxproj -> C:\GP\gamejam_c\x64\Debug\gamejam_c.exe

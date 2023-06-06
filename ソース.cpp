@@ -4,15 +4,17 @@
 
 int WINAPI WinMain(HINSTANCE hlnstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-    int Cr,PadInput;
-    int x;
+    
     // ウィンドウサイズ設定
     SetGraphMode(1280, 720, 16);
     // ウィンドウモード設定
     ChangeWindowMode(TRUE);
 
-	if (DxLib_Init() == -1) return -1;
+    int Cr,PadInput;
+    int x0,x1,i;
+    int crs;
 	
+    if (DxLib_Init() == -1) return -1;
 
     // 白色の値を取得
     Cr = GetColor(255, 255, 255);
@@ -21,12 +23,22 @@ int WINAPI WinMain(HINSTANCE hlnstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     //DrawString(150, 240 - 32, "パッドのSTARTボタンを押してください", Cr);
     DrawBox(220, 10, 320, 20, 0xffffff,true);
     
-    DrawBox(260, 10, 280, 20, 0xff0000,true);
+    crs = DrawBox(260, 10, 280, 20, 0xff0000,true);
 
-    for (x = 220; x < 320; x++)
+    for (i = 0; i <= 100; i++)
     {
-        DrawBox(265+x , 5, 275+x, 25, 0x00ff00, true);
+        DrawFormatString(50, 50, 0xffffff, "%3d", i);
+
+        if (i >= 100)
+        {
+            for (i = 100; i > 0; i--)
+            {
+                 DrawFormatString(50, 50, 0xffffff, "%3d", i);
+            }
+        } 
     }
+    
+    
     
 
     // 入力待ち
