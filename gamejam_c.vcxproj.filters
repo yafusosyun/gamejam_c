@@ -42,6 +42,13 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
 
+    <ClCompile Include="fps.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="HammerAnimation.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI.h">
@@ -69,6 +76,12 @@
 
     <ClInclude Include="AbstractScene.h">
 
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="fps.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="HammerAnimation.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
