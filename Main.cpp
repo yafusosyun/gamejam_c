@@ -1,4 +1,6 @@
 #include "DxLib.h"
+#include "PadInput.h"
+#include "Title.h"
 
 #define _SCREEN_HEIGHT_ 720
 #define _SCREEN_WIDHT_	1280
@@ -25,11 +27,13 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		return -1;
 	}
 
-	SceneManager sceneMng(dynamic_cast<AbstractScane*>(new Input()));
+	SceneManager sceneMng(new Title());
 
 	while (sceneMng.Update() != nullptr && ProcessMessage() != -1)
 	{
 		ClearDrawScreen();
+
+		PadInput::UpdateKey();
 
 		sceneMng.Draw();
 

@@ -29,6 +29,7 @@ public:
     static void StickControl();
     static int GetPadThumbLX() { return Input.ThumbLX; }
     static int GetPadThumbLY() { return Input.ThumbLY; }
+    static int GetFlgY() { return flgY; }
     //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½uŠÔ
     static bool OnClick(int inputKey)
     {
