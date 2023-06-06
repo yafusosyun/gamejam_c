@@ -3,6 +3,9 @@
 #include "Timing.h"
 #include "PadInput.h"
 #include "UI.h"
+#include "InputRankingScene.h"
+#include "DrawRankingScene.h"
+#include "Ranking.h"
 
 #define _SCREEN_HEIGHT_ 720
 #define _SCREEN_WIDHT_	1280
@@ -30,17 +33,17 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 	}
 
 
-	/*SceneManager sceneMng(dynamic_cast<AbstractScene*>(new Timing())); */
+	SceneManager sceneMng(dynamic_cast<AbstractScene*>(new InputRankingScene()));
 
 	//SceneManager sceneMng(/*new Title*/);
 
 
-	while (/*sceneMng.Update() != nullptr &&*/ ProcessMessage() != -1)
+	while (sceneMng.Update() != nullptr && ProcessMessage() != -1)
 	{
 		PadInput::UpdateKey();
 		ClearDrawScreen();
 
-		/*sceneMng.Draw();*/
+		sceneMng.Draw();
 
 		ScreenFlip();
 		PadInput::UpdateKey();

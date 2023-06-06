@@ -151,31 +151,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DrawRankingScene.cpp" />
+    <ClCompile Include="InputRankingScene.cpp" />
     <ClCompile Include="Main.cpp" />
-
-    
   </ItemGroup>
   <ItemGroup>
-
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-
     <ClCompile Include="Timing.cpp" />
-
-
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScene.h" />
+    <ClInclude Include="DrawRankingScene.h" />
+    <ClInclude Include="InputRankingScene.h" />
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="SceneManager.h" />
-
     <ClInclude Include="Timing.h" />
-
     <ClInclude Include="UI.h" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="Retult.cpp" />
-    
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ranking.h" />
