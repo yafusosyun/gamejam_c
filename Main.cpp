@@ -33,9 +33,11 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 	}
 
 	//SceneManager sceneMng(/*new Title*/);
-	HammerAnimation hammer;
+	HammerAnimation::AnimInit();
+	bool f = false;
+	bool h = false;
 
-	while (/*sceneMng.Update() != nullptr &&*/ ProcessMessage() != -1)
+	while (/*sceneMng.Update() != nullptr &&*/ ProcessMessage() != -1 && !PadInput::OnClick(XINPUT_BUTTON_BACK))
 	{
 		ClearDrawScreen();
 		PadInput::UpdateKey();
@@ -44,17 +46,22 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		fps::FpsControll_Update();
 		fps::FpsControll_Draw();
 
-		hammer.DrawHammer(500, 300);
-		if (PadInput::OnClick(XINPUT_BUTTON_A)) {
-			hammer.flg = 0;
-		}
-		if (hammer.flg != 2) {
-			hammer.MissAnimation();
-		}
-
 		/*sceneMng.Draw();*/
 
-		
+		HammerAnimation::DrawHammer(500, 300);
+		if (PadInput::OnClick(XINPUT_BUTTON_A)) {
+			f = true;
+		}
+		if (PadInput::OnClick(XINPUT_BUTTON_B)) {
+			h = true;
+		}
+		if (f) {
+			f = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Right);
+		}
+		if (h) {
+			h = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Left);
+		}
+
 		//â∫ï˚å¸
 		if (PadInput::flgY == 0 && PadInput::inputY < -MARGIN) {
 			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
@@ -62,6 +69,14 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		//è„ï˚å¸
 		if (PadInput::flgY == 0 && PadInput::inputY > MARGIN) {
 			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
+		}
+		//ç∂ï˚å¸
+		if (PadInput::flgX == 0 && PadInput::inputX < -MARGIN) {
+			DrawString(0, 20, "ç∂", 0xffffff);
+		}
+		//âEï˚å¸
+		if (PadInput::flgX == 0 && PadInput::inputX > MARGIN) {
+			DrawString(0, 20, "âE", 0xffffff);
 		}
 		
 		fps::FpsControll_Wait();
