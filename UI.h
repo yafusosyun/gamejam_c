@@ -6,10 +6,11 @@ class UI
 	
 public:
 
-	void CountDown() const;
-	void Score() const;
+	void CountDown() const;		//制限時間
+	void Score() ;				//スコア計算
+	void DrawScore();			//スコア表示
 
-	void AddScore();
+	void AddScore(int point) { gScore += point; }
 	int GetTime();
 	int GetScore() { return gScore; }
 };
