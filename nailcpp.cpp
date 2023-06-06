@@ -11,13 +11,21 @@
 /***********************************
 *　変数の宣言（クローバル変数）
 ************************************/
-int isu1;//椅子1画像の変数
-int isu2;//椅子2画像の変数
-int isu3;//椅子３画像の変数
-
-int miss1;//失敗時1の画像用の変数
-int miss2;//失敗時2の画像用の変数
-int miss3;//失敗時3の画像用の変数
+int F;//Fは失敗、Tは成功
+int FF;
+int FFF;
+int FFT;
+int T;
+int TF;
+int TT;
+int TTF;
+int TTT;
+int FFFF;
+int FFFT;
+int TTFF;
+int TTTF;
+int TTTT;
+int Start;//打つ前の画像
 /*******************
 関数宣言
 *************************/
@@ -54,18 +62,31 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hprevInstance, _
 ************************************/
 int LoadImages(void)
 {
-	//画像の読込
-	isu1 = LoadGraph("images/1.png");//椅子１画像の読込
-	isu2 = LoadGraph("images/2.png");//椅子２画像の読込
-	isu3 = LoadGraph("images/3.png");//椅子３画像の読込
+	//釘を打つ前
+	 Start = LoadGraph("images/Start.png");
 
-	miss1 =  LoadGraph("images/miss1.png");//ミスしたときの画像の読込
-	miss2 = LoadGraph("images/miss1.png");//ミスしたときの画像の読込
-	miss3 = LoadGraph("images/miss1.png");//ミスしたときの画像の読込
-
-	//失敗時の椅子画像の読込
+	 //1回目
+	 F = LoadGraph("images/F.png");
+	 T = LoadGraph("images/T.png");
 	
+	
+	 //2回目
+	 TT = LoadGraph("images/TT.png");
+	FF = LoadGraph("images/FF.png");
+	TF = LoadGraph("images/TF.png");
 
+	//3回目
+	 TTF = LoadGraph("images/TTF.png");
+	 TTT = LoadGraph("images/TTT.png");
+	 FFT = LoadGraph("images/FFT.png");
+	 FFF = LoadGraph("images/FFF.png");
+
+	 //4回目
+	 FFFF = LoadGraph("images/FFFF.png");
+	 FFFT = LoadGraph("images/FFFT.png");
+	 TTFF = LoadGraph("images/TTFF.png");
+	 TTTF = LoadGraph("images/TTTF.png");
+	 TTTT = LoadGraph("images/TTTT.png");
 	return 0;
 }
 
@@ -74,25 +95,25 @@ int LoadImages(void)
 *****************************/
 void nail(void)
 {
-	int a;
-	int count;
+	int a = 0;
+	int count=0;
 	int miss = 0;
 
 	
 	switch (count) {
 
 	case 0://釘を打つ前
-			DrawGraph(0, 0, isu1, TRUE);
+			DrawGraph(0, 0, Start, TRUE);
 			break;
 
 	case 1://釘を打つ1回目
 		if (a == 0)
 		{
-			DrawGraph(0, 0, miss1, TRUE);//1回目ミス
+			DrawGraph(0, 0, F, TRUE);//1回目ミス
 			miss = 1;
 		}
 		else
-			DrawGraph(0, 0, isu2, TRUE);//1回目成功
+			DrawGraph(0, 0, T, TRUE);//1回目成功
 			break;
 			
 		case 2://釘を打つ2回目
@@ -100,18 +121,18 @@ void nail(void)
 			{
 				if (miss == 1)
 				{
-					DrawGraph(0, 0, miss, TRUE);//2回連続失敗
+					DrawGraph(0, 0, FF, TRUE);//2回連続失敗
 					miss = 2;
 				}
 			}
 				else if(miss == 1)
 				{
-					DrawGraph(0, 0, miss, TRUE);//2回目成功
+					DrawGraph(0, 0, TF, TRUE);//2回目成功
 					miss = 2;
 				}
 				else if (miss == 0)
 			{
-				DrawGraph(0, 0, miss, TRUE);//2回目連続成功
+				DrawGraph(0, 0, TT, TRUE);//2回目連続成功
 			}
 				break;
 
@@ -120,20 +141,20 @@ void nail(void)
 			{
 				if (miss == 2)
 				{
-					DrawGraph(0, 0, miss, TRUE);//3回連続失敗
+					DrawGraph(0, 0, FFF, TRUE);//3回連続失敗
 				}
 			}
 			else if (miss == 2)
 			{
-				DrawGraph(0, 0, miss, TRUE);//2回失敗、1回成功
+				DrawGraph(0, 0, FFT, TRUE);//2回失敗、1回成功
 			}
 			else if (miss == 1)
 			{
-				DrawGraph(0, 0, miss, TRUE);//2回成功、1回失敗
+				DrawGraph(0, 0, TTF, TRUE);//2回成功、1回失敗
 			}
 			else if (miss == 0)
 			{
-				DrawGraph(0, 0, miss, TRUE);//3回連続成功
+				DrawGraph(0, 0, TTT, TRUE);//3回連続成功
 			}
 			break;
 
@@ -142,24 +163,24 @@ void nail(void)
 			{
 				if (miss == 3)
 				{
-					DrawTurnGraph(0, 0, isu2, TRUE);//4回連続ミス
+					DrawTurnGraph(0, 0, FFFF, TRUE);//4回連続ミス
 				}
 			}
 				else if (miss == 3)//3回失敗、1回成功
 				{
-					DrawGraph(0, 0, miss, TRUE);
+					DrawGraph(0, 0, FFFT, TRUE);
 				}
 				else if (miss == 2)
 				{
-					DrawGraph(0, 0, miss, TRUE);//2回失敗、2成功
+					DrawGraph(0, 0, TTFF, TRUE);//2回失敗、2成功a
 				}
 				else if (miss == 1)
 			{
-				DrawGraph(0, 0, miss, TRUE);//3回成功、1回失敗
+				DrawGraph(0, 0, TTTF, TRUE);//3回成功、1回失敗a
 			}
 				else if (miss == 0)
 			{
-				DrawGraph(0, 0, miss, TRUE);//4回連続成功
+				DrawGraph(0, 0, TTTT, TRUE);//4回連続成功a
 			}
 				break;
 			
