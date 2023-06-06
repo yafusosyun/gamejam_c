@@ -1,6 +1,6 @@
 #include<DxLib.h>
 #include<stdio.h>
-
+#include"nail.h"
 
 
 #define _SCREEN_HEIGHT_ 720
@@ -30,32 +30,30 @@ int Start;//打つ前の画像
 関数宣言
 *************************/
 
-int LoadImages(void);//画像読込処理
-void nail(void);//釘のシステム	
 
 
 /********************
 プログラムの開始
 ***************************/
-int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hprevInstance, _In_ LPSTR lpCmdLine, _In_
-	int nCmdShow)
-{
-  
-	ChangeWindowMode(TRUE); // ウィンドウモード設定
-	if (DxLib_Init() == -1) return -1; // DXライブラリ初期化処理
-
-	//画像読込関数の呼び出し
-	if (LoadImages() == -1) return -1;
-
-	nail();
-
-
-	WaitKey(); // 結果を見るためにキー待ち
-	
-
-	DxLib_End(); // DXライブラリ使用の終了処理
-	return 0; // ソフトの終了
-}
+//int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hprevInstance, _In_ LPSTR lpCmdLine, _In_
+//	int nCmdShow)
+//{
+//  
+//	ChangeWindowMode(TRUE); // ウィンドウモード設定
+//	if (DxLib_Init() == -1) return -1; // DXライブラリ初期化処理
+//
+//	//画像読込関数の呼び出し
+//	if (LoadImages() == -1) return -1;
+//
+//	nail();
+//
+//
+//	WaitKey(); // 結果を見るためにキー待ち
+//	
+//
+//	DxLib_End(); // DXライブラリ使用の終了処理
+//	return 0; // ソフトの終了
+//}
 
 /***********************************
 * 画像読込
@@ -97,23 +95,23 @@ void nail(void)
 {
 	int a = 0;
 	int count=0;
-	int miss = 0;
+	int miss = 2;
 
 	
 	switch (count) {
 
 	case 0://釘を打つ前
-			DrawGraph(0, 0, Start, TRUE);
+			DrawGraph(450, 150, Start, TRUE);
 			break;
 
 	case 1://釘を打つ1回目
 		if (a == 0)
 		{
-			DrawGraph(0, 0, F, TRUE);//1回目ミス
+			DrawGraph(450, 150, F, TRUE);//1回目ミス
 			miss = 1;
 		}
 		else
-			DrawGraph(0, 0, T, TRUE);//1回目成功
+			DrawGraph(450, 150, T, TRUE);//1回目成功
 			break;
 			
 		case 2://釘を打つ2回目
@@ -121,18 +119,18 @@ void nail(void)
 			{
 				if (miss == 1)
 				{
-					DrawGraph(0, 0, FF, TRUE);//2回連続失敗
+					DrawGraph(450, 150, FF, TRUE);//2回連続失敗
 					miss = 2;
 				}
 			}
 				else if(miss == 1)
 				{
-					DrawGraph(0, 0, TF, TRUE);//2回目成功
+					DrawGraph(450, 150, TF, TRUE);//2回目成功
 					miss = 2;
 				}
 				else if (miss == 0)
 			{
-				DrawGraph(0, 0, TT, TRUE);//2回目連続成功
+				DrawGraph(450, 150, TT, TRUE);//2回目連続成功
 			}
 				break;
 
@@ -141,20 +139,20 @@ void nail(void)
 			{
 				if (miss == 2)
 				{
-					DrawGraph(0, 0, FFF, TRUE);//3回連続失敗
+					DrawGraph(450, 150, FFF, TRUE);//3回連続失敗
 				}
 			}
 			else if (miss == 2)
 			{
-				DrawGraph(0, 0, FFT, TRUE);//2回失敗、1回成功
+				DrawGraph(450, 150, FFT, TRUE);//2回失敗、1回成功
 			}
 			else if (miss == 1)
 			{
-				DrawGraph(0, 0, TTF, TRUE);//2回成功、1回失敗
+				DrawGraph(450, 150, TTF, TRUE);//2回成功、1回失敗
 			}
 			else if (miss == 0)
 			{
-				DrawGraph(0, 0, TTT, TRUE);//3回連続成功
+				DrawGraph(450, 150, TTT, TRUE);//3回連続成功
 			}
 			break;
 
@@ -163,7 +161,7 @@ void nail(void)
 			{
 				if (miss == 3)
 				{
-					DrawTurnGraph(0, 0, FFFF, TRUE);//4回連続ミス
+					DrawTurnGraph(450, 150, FFFF, TRUE);//4回連続ミス
 				}
 			}
 				else if (miss == 3)//3回失敗、1回成功
