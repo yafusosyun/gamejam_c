@@ -1,4 +1,16 @@
 #pragma once
+#include"AbstractScene.h"
 
-void DrawResult(int key, int& gamemode, int score);       //リザルト描画
-int LoadResultImage();   //リザルト画像読み込み
+class Result : public AbstractScene {
+public:
+	//デストラクタ
+	virtual ~Result() {};
+
+	//描画以外の更新を実装する
+	virtual AbstractScene* Update()override;
+
+	//描画に関することを実装する
+	virtual void Draw()const override;
+};
+
+

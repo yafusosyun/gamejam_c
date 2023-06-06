@@ -18,8 +18,10 @@ private:
     static char nowKey[BUTTONS];    //今回の入力キー
     static PADSTATE state;
     static XINPUT_STATE Input;
-    static int inputX, inputY;
     static int oldX, oldY;
+
+public:
+    static int inputX, inputY;
     static int flgX, flgY;
 
 private:
@@ -29,6 +31,7 @@ public:
     static void StickControl();
     static int GetPadThumbLX() { return Input.ThumbLX; }
     static int GetPadThumbLY() { return Input.ThumbLY; }
+    static int GetFlgY() { return flgY; }
     //ボタンを押した瞬間
     static bool OnClick(int inputKey)
     {
