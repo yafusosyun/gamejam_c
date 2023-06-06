@@ -1,2 +1,4 @@
-﻿  Main.cpp
-  gamejam_c.vcxproj -> C:\Users\sinzato shuto\Desktop\gamejam_c\x64\Debug\gamejam_c.exe
+﻿  HammerAnimation.cpp
+C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(5,2): error C2660: 'DxLib::DrawRotaGraph': 関数に 4 個の引数を指定できません。
+C:\dxlib\DxLib.h(2750,14): message : 'DxLib::DrawRotaGraph' の宣言を確認してください
+C:\Users\sinzato shuto\Desktop\gamejam_c\HammerAnimation.cpp(5,2): message : 引数リスト '(int, int, int, int)' を一致させようとしているとき
