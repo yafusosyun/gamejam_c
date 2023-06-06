@@ -1,5 +1,6 @@
 #include "Title.h"
 #include "PadInput.h"
+#include "GameEnd.h"
 
 #define WINDOW_CENTER 1280*0.4
 
@@ -49,8 +50,8 @@ AbstractScene* Title::Update()
         case 1:
             return this/*ランキング*/;
             break;
-        case 2:
-            return this/*ゲームエンド*/;
+        case 2:/*ゲームエンド*/
+            return new GameEnd();
             break;
         }
     }
