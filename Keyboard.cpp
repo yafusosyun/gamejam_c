@@ -23,6 +23,13 @@ const char AllStr[5][ALPHA_MAX / 2 + 1] = {
 	"0123456789"
 };
 
+/************* 変数 *************/
+
+int backimage = 0;            //背景画像
+int Cursorimage[2] = { 0 };   //カーソル画像
+int Cancelimage[2] = { 0 };   //画像をキャンセル
+int OKimage[2] = { 0 };       //OK(確定)
+
 //キーボード音声
 int ClickKeyboard;
 int CursorMoveKeyboard;
@@ -42,9 +49,9 @@ int input_Pos;                   //入力中の配列の〇番目
 
 int key_font = 0;                //キーボードで使用するフォント
 
-/********************************/
-//キーボード初期化
-/********************************/
+/********************************
+*キーボード初期化
+********************************/
 void KeyBoardInit()
 {
 	//カーソルの初期位置は"A"
@@ -148,6 +155,15 @@ void KeyBoard_Update(int nowkey)
 	}
 }
 
+//カーソルの移動・ボタンの長押しを調整
+bool CursorControl()
+{
+	int timing = 8;
+	if (frame % timing == 0) return true;
+	//frame = 0;
+
+	return false;
+}
 
 //Bボタンが押された時の処理
 int KeyBoard_PushB(int nowkey, char* name)
@@ -155,7 +171,7 @@ int KeyBoard_PushB(int nowkey, char* name)
 	//　Aボタンを押している間
 	if (nowkey & PAD_INPUT_B)
 	{
-		//長押しでの連続入力のタイミングを調整（PCのような）
+		//長押しでの連続入力のタイミングを調整
 		if (CursorControl() == true)
 		{
 			// "A～Z","a～z","1～9"の上で押された

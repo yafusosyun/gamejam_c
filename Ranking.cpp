@@ -1,5 +1,6 @@
 #include"DxLib.h"
 #include"Ranking.h"
+#include"Keyboard.h"
 
 #define RANKING_DATA 5    // ランキング上位５人 
 
@@ -26,6 +27,35 @@ void DrawRanking(int key, int& gamemode)
 	}
 
 	SetFontSize(30);
+}
+
+//ランキング入力
+void InputRanking(int nowkey, int& gamemode, int score)
+{
+	// ランキング画像表示
+	DrawGraph(0, 0, g_RankingImg, FALSE);
+
+	// フォントサイズの設定
+	SetFontSize(20);
+
+	// 名前入力指示文字列の描画
+	DrawString(150, 240, "ランキングに登録します", 0xFFFFFF);
+	DrawString(150, 270, "名前を英字で入力してください", 0xFFFFFF);
+	//　　↓　一文字でも入力された状態で"OK"を押すと、"1"が返ってくる
+	if (KeyBoard_PushB(nowkey, g_Ranking[RANKING_DATA - 1].name) == 1)
+	{
+		g_Ranking[RANKING_DATA - 1].score = score;   // ランキングデータにスコアを登録
+		SortRanking();                               // ランキング並べ替え
+		SaveRanking();                               // ランキングデータの保存
+
+		StopSoundMem(RankingBGM);
+		gamemode = 3;                                // ゲームモードの変更
+	}
+	else    //入力完了していない時
+	{
+		KeyBoard_Update(nowkey);                        //キーボードの更新・操作
+
+	}
 }
 
 /******************************************
