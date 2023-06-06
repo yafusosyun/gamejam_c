@@ -135,7 +135,7 @@ void DrawRanking(int key, int& gamemode)
 
 		//ランキングサウンド読み込み
 		int LoadRankingSounds() {
-			//if ((RankingBGM = LoadSoundMem("sounds/bgm/Ranking.wav")) == -1)return -1;
-			//if ((ClickRanking = LoadSoundMem("sounds/se/Click.wav")) == -1) return -1;
-			//if ((CursorMoveRanking = LoadSoundMem("sounds/se/Click.wav")) == -1) return -1;
+			if ((RankingBGM = LoadSoundMem("sounds/bgm/Ranking.wav")) == -1)return -1;
+			if ((ClickRanking = LoadSoundMem("sounds/se/Click.wav")) == -1) return -1;
+			if ((CursorMoveRanking = LoadSoundMem("sounds/se/Click.wav")) == -1) return -1;
 		}
