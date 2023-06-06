@@ -1,7 +1,8 @@
 #include "UI.h"
 #include "DxLib.h"
 
-void GameSystem::CountDown()  const {
+void UI::CountDown()  const 
+{
 	//ƒ^ƒCƒ€‚Ì‰ÁZˆ—
 	if (--gWaitTime < 30) {
 	}
@@ -9,14 +10,31 @@ void GameSystem::CountDown()  const {
 	DrawFormatString(990, 60, 0xffffff, "Time: %d", /*120-*/gWaitTime / 60);
 }
 
-void GameSystem::Score()  const {
+void UI::Score()  const 
+{
 	
 	SetFontSize(50);
-	DrawFormatString(990, 290, 0xfffffff, "%d", gScore);
+	DrawFormatString(990, 290, 0xffffff, "%d", gScore);
 	DrawString(990, 230, "Score", 0xffffff);
 
 }
 
-int GameSystem::GetTime() {
+void UI::AddScore()
+{
+	int n;
+	if (n >= 50 || n <= 60) {
+		n = 3;
+	}
+	else if (n >= 30 || n < 80 || !(n >= 50 || n <= 60)) {
+		n = 2;
+	}
+	else {
+		n = 1;
+	}
+	gScore += n * 100;
+}
+
+int UI::GetTime() 
+{
 	return gWaitTime;
 }
