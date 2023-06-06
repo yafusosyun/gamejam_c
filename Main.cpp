@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "PadInput.h"
 #include "fps.h"
+#include "HammerAnimation.h"
 
 #define _SCREEN_HEIGHT_ 720
 #define _SCREEN_WIDHT_	1280
@@ -32,6 +33,7 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 	}
 
 	//SceneManager sceneMng(/*new Title*/);
+	HammerAnimation hammer;
 
 	while (/*sceneMng.Update() != nullptr &&*/ ProcessMessage() != -1)
 	{
@@ -42,6 +44,8 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		fps::FpsControll_Update();
 
 		fps::FpsControll_Draw();
+
+		hammer.DrawHammer();
 
 		/*sceneMng.Draw();*/
 
