@@ -1,6 +1,7 @@
 #include"DxLib.h"
 #include"Result.h"
 
+int g_ResultImg;					//リザルト画像用
 int page = 0;		//ページ移動
 
 //エンド描画

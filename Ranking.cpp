@@ -2,7 +2,14 @@
 #include"Ranking.h"
 
 #define RANKING_DATA 5    // ランキング上位５人 
+
 int g_RankingImg;   // ランキング画像
+
+//サウンド用変数
+int RankingBGM;
+int ClickRanking;
+int CursorMoveRanking;
+
 struct RankingData g_Ranking[RANKING_DATA];    // ランキングデータの変数宣言
 
 //ランキング描画
@@ -124,4 +131,11 @@ void DrawRanking(int key, int& gamemode)
 			if ((g_RankingImg = LoadGraph("images/Ranking/input.png")) == -1) return -1;
 
 			return 0;
+		}
+
+		//ランキングサウンド読み込み
+		int LoadRankingSounds() {
+			//if ((RankingBGM = LoadSoundMem("sounds/bgm/Ranking.wav")) == -1)return -1;
+			//if ((ClickRanking = LoadSoundMem("sounds/se/Click.wav")) == -1) return -1;
+			//if ((CursorMoveRanking = LoadSoundMem("sounds/se/Click.wav")) == -1) return -1;
 		}
