@@ -359,5 +359,5 @@ MigrationBackup/
 FodyWeavers.xsd
 .vs/
 
-/.vs
-/x64
+.vs/
+x64/
