@@ -359,5 +359,8 @@ MigrationBackup/
 FodyWeavers.xsd
 .vs/
 .vs/gamejam_c/v17/
+
 x64/
 x64/Debug/
+x64/Debug/vc143.idb
+x64/Debug/vc143.pdb
