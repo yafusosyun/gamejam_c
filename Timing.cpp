@@ -6,7 +6,7 @@ int Timing::judge = -1;
 
 AbstractScene* Timing::Update() {
 
-	PadInput::UpdateKey();
+	/*PadInput::UpdateKey();*/
 
 	//AÉ{É^ÉìÇâüÇ∑Ç‹Ç≈0Å`100ÇçsÇ´óàÇ∑ÇÈ
 	if (PadInput::OnClick(XINPUT_BUTTON_A) == 0) {
@@ -45,6 +45,29 @@ AbstractScene* Timing::Update() {
 		if (gaugeflg == true) {
 			gaugeflg = false;
 		}
+		else if (gaugeflg == false) {
+			gaugeflg = true;
+			judgepoint = GetRand(100);
+			goodleft = ((bar / 100) * judgepoint - 100);
+			if (goodleft < 0) {
+				goodleft = 0;
+			}
+
+			goodright = ((bar / 100) * judgepoint + 100);
+			if (goodright > 1000) {
+				goodright = 1000;
+			}
+
+			greatleft = ((bar / 100) * judgepoint - 10);
+			if (greatleft < 0) {
+				greatleft = 0;
+			}
+
+			greatright = ((bar / 100) * judgepoint + 10);
+			if (greatright > 1000) {
+				greatright = 1000;
+			}
+		}
 	}
 
 	return this;
@@ -52,10 +75,12 @@ AbstractScene* Timing::Update() {
 
 void Timing::Draw() const {
 	DrawBox(20, 100, 20 + bar, 150, 0xff0000, true);
-	DrawBox(400 + 20, 100, 600 + 20, 150, 0x00ff00, true);
-	DrawBox(490 + 20, 100, 510 + 20, 150, 0xff00ff, true);
-	DrawFormatString((gauge * (bar / 100)) + 20, 100, 0xffffff, "|");
+	DrawBox(goodleft + 20, 100, goodright + 20, 150, 0x00ff00, true);
+	DrawBox(greatleft + 20, 100, greatright + 20, 150, 0xff00ff, true);
+	DrawTriangle((gauge * (bar / 100)), 80, (gauge * (bar / 100)) + 40, 80, (gauge * (bar / 100)) + 20, 100, 0xffffff, true);
+	DrawBox((gauge * (bar / 100)) + 20 - 2, 100, (gauge * (bar / 100)) + 20 + 2, 150, 0xffffff, true);
 	DrawFormatString(20, 200, 0xffffff, "%d", tmp);
+	DrawFormatString(20, 350, 0xffffff, "%d", fps);
 	DrawFormatString(20, 250, 0xffffff, "%d", gaugeflg);
 	switch (judge)
 	{

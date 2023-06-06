@@ -10,8 +10,15 @@ private:
 	bool numgaugeflg = true;
 	bool gaugeflg = true;
 	int tmp = 0;
-	const int judgepoint = 50;
+	int judgepoint = 50;
 	static int judge;
+
+	int goodleft = ((bar / 100) * judgepoint - 100);
+	int goodright = ((bar / 100) * judgepoint + 100);
+	int greatleft = ((bar / 100) * judgepoint - 10);
+	int greatright = ((bar / 100) * judgepoint + 10);
+
+	int fps;
 public:
 	//デスストラクタ
 	virtual ~Timing() {};
