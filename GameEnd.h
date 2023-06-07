@@ -13,7 +13,10 @@ public:
 	virtual void Draw() const override;
 
 private:
-	int Time;
-	const int EndTime = 300;  //終わる時間
+	int Font;      //フォント
+	int EndImage;  //背景画像
+	int ScrollY;
+	int EndTime;  //終わる時間
+	const int FontSiz = 50;   //フォントサイズ
 };
 
