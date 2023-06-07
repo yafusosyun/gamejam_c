@@ -48,27 +48,15 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 
 		/*sceneMng.Draw();*/
 
-		HammerAnimation::DrawHammer(500, 300);
-		if (PadInput::OnClick(XINPUT_BUTTON_A)) {
-			f = true;
-		}
-		if (PadInput::OnClick(XINPUT_BUTTON_B)) {
-			h = true;
-		}
-		if (f) {
-			f = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Right);
-		}
-		if (h) {
-			h = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Left);
-		}
+
 
 		//â∫ï˚å¸
 		if (PadInput::flgY == 0 && PadInput::inputY < -MARGIN) {
-			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
+			DrawString(0, 20, "â∫", 0xffffff);
 		}
 		//è„ï˚å¸
 		if (PadInput::flgY == 0 && PadInput::inputY > MARGIN) {
-			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
+			DrawString(0, 20, "è„", 0xffffff);
 		}
 		//ç∂ï˚å¸
 		if (PadInput::flgX == 0 && PadInput::inputX < -MARGIN) {

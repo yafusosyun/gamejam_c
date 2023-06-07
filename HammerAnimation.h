@@ -27,7 +27,7 @@ private:
 	static int flg;     //ƒnƒ“ƒ}[‚Ìã‚°‰º‚°Ø‚è‘Ö‚¦
 
 public:
-	HammerAnimation();
+	//HammerAnimation();
 	~HammerAnimation() {};
 
 	static void AnimInit();

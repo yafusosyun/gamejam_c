@@ -172,10 +172,15 @@ void HammerAnimation::MissAnimation(Direction direction)
 
 //åƒÇ—èoÇµï˚ó·
 //HammerAnimation::DrawHammer(500, 300);
-//bool f = true;
-//if (PadInput::OnClick(XINPUT_BUTTON_A)) {
+//if (PadInput::OnClick(XINPUT_BUTTON_A) && !h) {
 //	f = true;
 //}
+//if (PadInput::OnClick(XINPUT_BUTTON_B) && !f) {
+//	h = true;
+//}
 //if (f) {
-//	f = HammerAnimation::SelectAnimation(AnimSelect::Strong);
+//	f = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Right);
+//}
+//if (h) {
+//	h = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Left);
 //}
