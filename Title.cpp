@@ -3,6 +3,8 @@
 #include "GameMain.h"
 #include "GameEnd.h"
 #include "Ranking.h"
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 #define WINDOW_CENTER 1280*0.35
 
@@ -11,6 +13,7 @@ Title::Title()
     CursorY = 0;
     Font= CreateFontToHandle("UD デジタル 教科書体 NP-B", FontSiz, 7, DX_FONTTYPE_ANTIALIASING_EDGE,-1,3);
     TitleImage = LoadGraph("images/Title.png");
+    CursorImage = LoadGraph("images/cursor.png");
 }
 
 AbstractScene* Title::Update()
@@ -64,5 +67,6 @@ void Title::Draw() const
     DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 400 + FontSiz, "ランキング", 0x4169E1, Font, 0xffffff);
     DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 500 + FontSiz, "ゲームを終わる", 0x4169E1, Font, 0xffffff);
 
-    DrawCircle(static_cast<int>(WINDOW_CENTER)-30, CursorY * 100 + (320+FontSiz), 20, 0xff0000, TRUE);
+    //DrawCircle(static_cast<int>(WINDOW_CENTER)-30, CursorY * 100 + (320+FontSiz), 20, 0xff0000, TRUE);
+    DrawRotaGraph(static_cast<int>(WINDOW_CENTER) - 30, CursorY * 100 + (330 + FontSiz), 1.0, M_PI / 2, CursorImage, TRUE, FALSE);
 }

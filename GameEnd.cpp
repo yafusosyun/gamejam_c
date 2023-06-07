@@ -35,6 +35,4 @@ void GameEnd::Draw() const
 	DrawStringToHandle(static_cast<int>(WINDOW_CENTER) - 100, (910+FontSiz)-ScrollY, "âÊëú", 0x4169E1, Font, 0xffffff);
 	DrawStringToHandle(static_cast<int>(WINDOW_CENTER) - 100, (960+FontSiz)-ScrollY, "BGMÅESE", 0x4169E1, Font, 0xffffff);
 	DrawStringToHandle(static_cast<int>(WINDOW_CENTER)- 100, (1100+FontSiz)-ScrollY, "Thank you for playing!", 0x4169E1, Font, 0xffffff);
-
-	DrawFormatString(0, 0, 0xffffff, "%d", ScrollY);
 }
