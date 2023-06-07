@@ -1,19 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-
-
-
     <ClCompile Include="Keyboard.cpp" />
-
     <ClCompile Include="fps.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="HammerAnimation.cpp" />
-
-
-
     <ClCompile Include="GameEnd.cpp" />
-
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -21,16 +13,11 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Ranking.cpp" />
-
-    <ClCompile Include="Retult.cpp" />
-
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="Title.cpp" />
-    <ClCompile Include="nailcpp.cpp" />
     <ClCompile Include="GameEnd.cpp" />
-
     <ClCompile Include="Result.cpp" />
-
+    <ClCompile Include="nail.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Keyboard.h" />
@@ -38,17 +25,11 @@
     <ClInclude Include="fps.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="HammerAnimation.h" />
-
-
     <ClCompile Include="InputRankingScene.cpp" />
     <ClCompile Include="DrawRankingScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-   
-
-
     <ClInclude Include="GameEnd.h" />
-
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Timing.h" />
@@ -56,7 +37,6 @@
     <ClInclude Include="UI.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Result.h" />
-
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="Title.h" />
     <ClCompile Include="UI.cpp">
@@ -104,9 +84,7 @@
     <ClInclude Include="Result.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-
     <ClInclude Include="InputRankingScene.h" />
     <ClInclude Include="DrawRankingScene.h" />
-
   </ItemGroup>
 </Project>

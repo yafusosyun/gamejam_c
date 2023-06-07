@@ -152,27 +152,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-
-
-    <ClCompile Include="nailcpp.cpp" />
-
     <ClCompile Include="Keyboard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Keyboard.h" />
-
     <ClCompile Include="fps.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="HammerAnimation.cpp" />
     <ClCompile Include="GameEnd.cpp" />
-
-
     <ClCompile Include="DrawRankingScene.cpp" />
     <ClCompile Include="InputRankingScene.cpp" />
-
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="nail.cpp" />
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Timing.cpp" />
@@ -185,9 +178,7 @@
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="HammerAnimation.h" />
     <ClInclude Include="GameEnd.h" />
-
     <ClInclude Include="nail.h" />
-
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Timing.h" />

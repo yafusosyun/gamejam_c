@@ -29,7 +29,7 @@ AbstractScene* GameMain::Update() {
 	
 	if (PadInput::OnClick(XINPUT_BUTTON_B))
 	{
-		return new Result();
+		return new Result(ui.gScore, ui.gWaitTime);
 	}
 
 	return this;

@@ -3,7 +3,7 @@
 
 class Result : public AbstractScene {
 private:
-	int Score, Time;
+	int Score, Time, Score1;
 	bool flg;
 
 public:

@@ -6,6 +6,8 @@
 
 #define RANKING_FILE_NAME "Ranking.txt"
 
+Ranking::RANKING_DATA Ranking::rankingData[5] = { 0 };
+
 void Ranking::ReadRanking() {
 	std::ifstream ifs(RANKING_FILE_NAME);
 

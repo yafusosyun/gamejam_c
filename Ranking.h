@@ -9,14 +9,14 @@ public:
 	std::string name;
 	long int score;
 	};
-private:
-	RANKING_DATA rankingData[5];
+public:
+	static RANKING_DATA rankingData[5];
 
 public:
 	void ReadRanking();
 	void WriteRanking(std::string _name, long int _score);
 
-	RANKING_DATA GetRankingData(int index) { return rankingData[index]; }
+	static RANKING_DATA GetRankingData(int index) { return rankingData[index]; };
 };
 
 //void SortRanking(void);  // ƒ‰ƒ“ƒLƒ“ƒO‚Ì•À‚×‘Ö‚¦
