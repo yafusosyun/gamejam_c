@@ -4,7 +4,9 @@
 class GameMain : public AbstractScene {
 private:
 	bool flg = true;
+	int MainImg;
 public:
+	GameMain();
 	//デスストラクタ
 	virtual ~GameMain() {};
 

@@ -1,11 +1,10 @@
 #pragma once
 #include "AbstractScene.h"
 
-#define bar 1000
+#define bar 900
 
 class Timing : public AbstractScene {
 private:
-	int timing;
 	int gauge = 0;
 	int speed = 1;
 	bool numgaugeflg = true;
@@ -22,11 +21,13 @@ private:
 
 	int fps;
 
-	int comp = 0;//完成度
+	static int comp;//完成度
 	int nailpoint = 4;//釘打つ箇所
 	int nailcount = 4;//釘打つ回数
 
 public:
+	void Init();
+
 	//デスストラクタ
 	virtual ~Timing() {};
 
@@ -40,4 +41,5 @@ public:
 	static int GetJudge() { return judge; }
 	static int GetFlg() { return gaugeflg; }
 	static int GetButtonFlg() { return buttonflg; }
+	static int GetComp() { return comp; }
 };

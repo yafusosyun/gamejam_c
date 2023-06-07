@@ -3,10 +3,11 @@
 
 enum class AnimSelect
 {
-	Strong,
-	Normal,
+	Miss = 0,
 	Weak,
-	Miss
+	Strong,
+	Normal
+	
 };
 
 enum class Direction
@@ -36,7 +37,7 @@ public:
 	static void DrawHammer(float x, float y);
 
 	/* SelectAnimation(叩くときの強さ又はミス, 右と左どちらか) */
-	static bool SelectAnimation(AnimSelect select, Direction direction);
+	static bool SelectAnimation(int select, Direction direction);
 	//叩くアニメーション
 	static void HitAnim(float _angle, float _y, float _bangle, float _by, Direction direction);   
 	//ミスしたときのアニメーション

@@ -3,11 +3,11 @@
 
 class Result : public AbstractScene {
 private:
-	int Score, Time, Score1;
+	int Score, Comp, Score1;
 	bool flg;
 
 public:
-	Result(int score,int time);
+	Result(int score,int comp);
 	//デストラクタ
 	virtual ~Result() {};
 

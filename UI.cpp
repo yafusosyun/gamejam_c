@@ -2,6 +2,11 @@
 #include "DxLib.h"
 #include "Timing.h"
 
+void UI::Init() {
+	gWaitTime = 600;
+	gScore = 0;
+}
+
 void UI::CountDown()  const 
 {
 	//ƒ^ƒCƒ€‚Ì‰ÁZˆ—

@@ -6,7 +6,7 @@ public:
 	mutable int gScore = 0;
 	
 public:
-
+	void Init();
 	void CountDown() const;		//制限時間
 	void DrawCountDown();
 	int Score() ;				//スコア計算

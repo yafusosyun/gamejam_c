@@ -24,7 +24,7 @@ public:
 	int TTTT;
 	int Start;//打つ前の画像
 public:
-	Nail();
+	void Init();
 	int LoadImages(void);//画像読込処理
 	void nail(void);//釘のシステム	
 	void Draw();

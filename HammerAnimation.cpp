@@ -18,7 +18,7 @@ void HammerAnimation::AnimInit()
 	angle = 0;
 	flg = 0;
 	time = 0;
-	HammerImage = LoadGraph("C:/Users/sinzato shuto/Pictures/ƒgƒ‰ƒ“ƒv.jfif");
+	HammerImage = LoadGraph("images/Hammer.png");
 	StrongSE = LoadSoundMem("Hammer_SE/StrongSE.mp3");
 	NormalSE = LoadSoundMem("Hammer_SE/NormalSE.mp3");
 	WeakSE = LoadSoundMem("Hammer_SE/WeakSE.mp3");
@@ -32,24 +32,24 @@ void HammerAnimation::DrawHammer(float x, float y)
 {
 	pox = x;
 	poy = y;
-	DrawRotaGraph(pox + animx, poy + animy, 0.3, angle, HammerImage, TRUE);
+	DrawRotaGraph(pox + animx, poy + animy, 0.5, angle, HammerImage, TRUE);
 }
 
-bool HammerAnimation::SelectAnimation(AnimSelect select, Direction direction)
+bool HammerAnimation::SelectAnimation(int select, Direction direction)
 {
-	if (select == AnimSelect::Strong)
+	if (select == 2)
 	{
 		HitAnim(0.4, 40, 0.1, 10, direction);
 	}
-	if (select == AnimSelect::Normal)
+	if (select == 3)
 	{
 		HitAnim(0.25, 25, 0.1, 10, direction);
 	}	
-	if (select == AnimSelect::Weak)
+	if (select == 1)
 	{
 		HitAnim(0.1, 10, 0.04, 4, direction);
 	}
-	if (select == AnimSelect::Miss)
+	if (select == 0)
 	{
 		MissAnimation(direction);
 	}

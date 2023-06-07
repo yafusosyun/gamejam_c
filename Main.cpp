@@ -41,7 +41,7 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 
 
 
-	SceneManager sceneMng(dynamic_cast<AbstractScene*>(new GameMain())); 
+	SceneManager sceneMng(dynamic_cast<AbstractScene*>(new DrawRankingScene(0))); 
 
 
 	//SceneManager sceneMng(/*new Title*/);

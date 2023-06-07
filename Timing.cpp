@@ -6,6 +6,22 @@
 int Timing::judge = -1;
 bool Timing::gaugeflg = true;
 bool Timing::buttonflg = false;
+int Timing::comp = 0;
+
+void Timing::Init() {
+	judge = -1;
+	gauge = 0;
+	speed = 1;
+	numgaugeflg = true;
+	gaugeflg = true;
+	buttonflg = false;
+	comp = 0;
+	judgepoint = 50;
+	goodleft = ((bar / 100) * judgepoint - 100);
+	goodright = ((bar / 100) * judgepoint + 100);
+	greatleft = ((bar / 100) * judgepoint - 10);
+	greatright = ((bar / 100) * judgepoint + 10);
+}
 
 AbstractScene* Timing::Update() {
 
@@ -37,24 +53,24 @@ AbstractScene* Timing::Update() {
 			judgepoint = GetRand(100);
 			speed = GetRand(5) + 1;
 			
-			goodleft = ((bar / 100) * judgepoint - 100);
+			goodleft = ((bar / 100) * judgepoint - (bar / 10));
 			if (goodleft < 0) {
 				goodleft = 0;
 			}
 
-			goodright = ((bar / 100) * judgepoint + 100);
-			if (goodright > 1000) {
-				goodright = 1000;
+			goodright = ((bar / 100) * judgepoint + (bar / 10));
+			if (goodright > bar) {
+				goodright = bar;
 			}
 
-			greatleft = ((bar / 100) * judgepoint - 10);
+			greatleft = ((bar / 100) * judgepoint - (bar / 100));
 			if (greatleft < 0) {
 				greatleft = 0;
 			}
 
-			greatright = ((bar / 100) * judgepoint + 10);
-			if (greatright > 1000) {
-				greatright = 1000;
+			greatright = ((bar / 100) * judgepoint + (bar / 100));
+			if (greatright > bar) {
+				greatright = bar;
 			}
 		}
 	}
@@ -112,21 +128,17 @@ void Timing::Draw() const {
 	DrawBox((gauge * (bar / 100)) + 20 - 2, 100, (gauge * (bar / 100)) + 20 + 2, 150, 0xffffff, true);
 	DrawFormatString(990, 400, 0xffffff, "%d %%", comp);
 	DrawString(990, 430, "äÆê¨ìx", 0xffffff);
-	DrawFormatString(20, 200, 0xffffff, "%d", tmp);
-	DrawFormatString(20, 350, 0xffffff, "%d", fps);
-	DrawFormatString(20, 250, 0xffffff, "%d", judge);
-	DrawFormatString(20, 280, 0xff00ff, "%d", comp);
-	DrawFormatString(20, 270, 0x0000ff, "%d",100 / (nailcount * nailpoint));
+	SetFontSize(100);
 	switch (judge)
 	{
 	case 0:
-		DrawString(20, 300, "miss", 0xffffff);
+		DrawString(20, 300, "Miss", 0xffffff);
 		break;
 	case 1:
-		DrawString(20, 300, "good", 0xffffff);
+		DrawString(20, 300, "Good", 0xffffff);
 		break;
 	case 2:
-		DrawString(20, 300, "graet", 0xffffff);
+		DrawString(20, 300, "Great", 0xffffff);
 		break;
 	default:
 		break;

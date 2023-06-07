@@ -35,8 +35,10 @@
 //	return 0; // ƒ\ƒtƒg‚ÌI—¹
 //}
 
-Nail::Nail() {
-	LoadImages();
+void Nail::Init() {
+	count = 0;
+	miss = 0;
+	fps = 0;
 }
 
 
@@ -81,12 +83,11 @@ int Nail::LoadImages(void)
 void Nail::nail(void)
 {
 
-
-
 	switch (count) {
 
 	case 0://“B‚ð‘Å‚Â‘O
 			DrawGraph(450, 150, Start, TRUE);
+			miss = 0;
 			break;
 
 	case 1://“B‚ð‘Å‚Â1‰ñ–Ú
@@ -116,10 +117,13 @@ void Nail::nail(void)
 		
 		else
 		{
+			if (miss == 2) {
+				DrawGraph(450, 150, FF, TRUE);
+			}
 			if (miss == 1) {
 				DrawGraph(450, 150, TF, TRUE);//2‰ñ–Ú¬Œ÷
 			}
-			if (miss == 0) {
+			else if (miss == 0) {
 				DrawGraph(450, 150, TT, TRUE);//2‰ñ–Ú˜A‘±¬Œ÷
 			}
 		}
@@ -185,21 +189,23 @@ void Nail::nail(void)
 				DrawGraph(450, 150, TTTT, TRUE);//4‰ñ˜A‘±¬Œ÷a
 			}
 		}
-		else if (miss == 3)//3‰ñŽ¸”sA1‰ñ¬Œ÷
-		{
+		else {
+			if (miss == 3)//3‰ñŽ¸”sA1‰ñ¬Œ÷
+			{
 			DrawGraph(450, 150, FFFT, TRUE);
-		}
-		else if (miss == 2)
-		{
+			}
+			else if (miss == 2)
+			{
 			DrawGraph(450, 150, TTFF, TRUE);//2‰ñŽ¸”sA2¬Œ÷a
-		}
-		else if (miss == 1)
-		{
+			}
+			else if (miss == 1)
+			{
 			DrawGraph(450, 150, TTTF, TRUE);//3‰ñ¬Œ÷A1‰ñŽ¸”sa
-		}
-		else if (miss == 0)
-		{
+			}
+			else if (miss == 0)
+			{
 			DrawGraph(450, 150, TTTT, TRUE);//4‰ñ˜A‘±¬Œ÷a
+			}
 		}
 		break;
 			
@@ -214,15 +220,6 @@ void Nail::Draw() {
 
 void Nail::SetNailCount() {
 	count += 1;
-	if (count >= 5) {
-		count = 0;
-		if (trunflg == false) {
-			trunflg = true;
-		}
-		else {
-			trunflg = false;
-		}
-	}
 }
 
 void Nail::Update() {
@@ -230,5 +227,6 @@ void Nail::Update() {
 
 	if (count == 4 && fps++ >= 60) {
 		count = 0;
+		fps = 0;
 	}
 }
