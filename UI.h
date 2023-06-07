@@ -1,7 +1,7 @@
 #pragma once
 class UI
 {
-	mutable int gWaitTime = 6000;
+	mutable int gWaitTime = 3600;
 	mutable int gScore = 0;
 	
 public:

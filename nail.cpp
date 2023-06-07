@@ -1,35 +1,15 @@
 #include<DxLib.h>
 #include<stdio.h>
 #include"nail.h"
-
-
-#define _SCREEN_HEIGHT_ 720
-#define _SCREEN_WIDHT_	1280
-#define _SCREEN_COLOR_BIT_16_ 16
-#define _SCREEN_COLOR_BIT_32_ 32
+#include"Timing.h"
 
 /***********************************
 *@•Ï”‚ÌéŒ¾iƒNƒ[ƒoƒ‹•Ï”j
 ************************************/
-int F;//F‚ÍŽ¸”sAT‚Í¬Œ÷
-int FF;
-int FFF;
-int FFT;
-int T;
-int TF;
-int TT;
-int TTF;
-int TTT;
-int FFFF;
-int FFFT;
-int TTFF;
-int TTTF;
-int TTTT;
-int Start;//‘Å‚Â‘O‚Ì‰æ‘œ
+
 /*******************
 ŠÖ”éŒ¾
 *************************/
-
 
 
 /********************
@@ -55,10 +35,17 @@ int Start;//‘Å‚Â‘O‚Ì‰æ‘œ
 //	return 0; // ƒ\ƒtƒg‚ÌI—¹
 //}
 
+Nail::Nail() {
+	LoadImages();
+}
+
+
+
+
 /***********************************
 * ‰æ‘œ“Çž
 ************************************/
-int LoadImages(void)
+int Nail::LoadImages(void)
 {
 	//“B‚ð‘Å‚Â‘O
 	 Start = LoadGraph("images/Start.png");
@@ -77,7 +64,7 @@ int LoadImages(void)
 	 TTF = LoadGraph("images/TTF.png");
 	 TTT = LoadGraph("images/TTT.png");
 	 FFT = LoadGraph("images/FFT.png");
-	 FFF = LoadGraph("images/FFF.png");
+	 FFF = LoadGraph("images/FFT.png");
 
 	 //4‰ñ–Ú
 	 FFFF = LoadGraph("images/FFFF.png");
@@ -91,13 +78,11 @@ int LoadImages(void)
 /**********************************
 “B‚ÌƒVƒXƒeƒ€
 *****************************/
-void nail(void)
+void Nail::nail(void)
 {
-	int a = 0;
-	int count=0;
-	int miss = 2;
 
-	
+
+
 	switch (count) {
 
 	case 0://“B‚ð‘Å‚Â‘O
@@ -105,84 +90,145 @@ void nail(void)
 			break;
 
 	case 1://“B‚ð‘Å‚Â1‰ñ–Ú
-		if (a == 0)
+		if (judge == 0)
 		{
 			DrawGraph(450, 150, F, TRUE);//1‰ñ–Úƒ~ƒX
 			miss = 1;
 		}
 		else
 			DrawGraph(450, 150, T, TRUE);//1‰ñ–Ú¬Œ÷
-			break;
+		break;
 			
 	case 2://“B‚ð‘Å‚Â2‰ñ–Ú
-		if (a == 0)
+		if (judge == 0)
 		{
-			if (miss == 1)
+			if (miss == 1 || miss == 2)
 			{
 				DrawGraph(450, 150, FF, TRUE);//2‰ñ˜A‘±Ž¸”s
 				miss = 2;
 			}
-		}
-			else if(miss == 1)
+			else 
 			{
 				DrawGraph(450, 150, TF, TRUE);//2‰ñ–Ú¬Œ÷
-				miss = 2;
+				miss = 1;
 			}
-			else if (miss == 0)
-		{
-			DrawGraph(450, 150, TT, TRUE);//2‰ñ–Ú˜A‘±¬Œ÷
 		}
-			break;
+		
+		else
+		{
+			if (miss == 1) {
+				DrawGraph(450, 150, TF, TRUE);//2‰ñ–Ú¬Œ÷
+			}
+			if (miss == 0) {
+				DrawGraph(450, 150, TT, TRUE);//2‰ñ–Ú˜A‘±¬Œ÷
+			}
+		}
+		break;
 
 	case 3://“B‚ð‘Å‚Â3‰ñ–Ú
-		if (a == 0)
+		if (judge == 0)
 		{
-			if (miss == 2)
+			if (miss == 0) {
+				DrawGraph(450, 150, TTF, TRUE);//2‰ñ¬Œ÷A1‰ñŽ¸”s
+				miss = 1;
+			}
+
+			else if (miss == 1) {
+				DrawGraph(450, 150, FFT, TRUE);//2‰ñŽ¸”sA1‰ñ¬Œ÷
+			}
+
+			else if (miss == 2 || miss == 3)
 			{
 				DrawGraph(450, 150, FFF, TRUE);//3‰ñ˜A‘±Ž¸”s
+				miss = 3;
 			}
 		}
-		else if (miss == 2)
-		{
+		else {
+			if (miss == 2)
+			{
 			DrawGraph(450, 150, FFT, TRUE);//2‰ñŽ¸”sA1‰ñ¬Œ÷
-		}
-		else if (miss == 1)
-		{
+			}
+			else if (miss == 1)
+			{
 			DrawGraph(450, 150, TTF, TRUE);//2‰ñ¬Œ÷A1‰ñŽ¸”s
-		}
-		else if (miss == 0)
-		{
+			}
+			else if (miss == 0)
+			{
 			DrawGraph(450, 150, TTT, TRUE);//3‰ñ˜A‘±¬Œ÷
+			}
 		}
 		break;
 
 	case 4://“B‚ð‘Å‚Â4‰ñ–ÚiÅŒã‚Ì–„‚Ü‚é‚Æ‚±‚ëj
-		if (a == 0)
+		if (judge == 0)
 		{
-			if (miss == 3)
+			if (miss == 3 || miss == 4)
 			{
-				DrawTurnGraph(450, 150, FFFF, TRUE);//4‰ñ˜A‘±ƒ~ƒX
+				DrawGraph(450, 150, FFFF, TRUE);//4‰ñ˜A‘±ƒ~ƒX
+				miss = 4;
 			}
-		}
+			
 			else if (miss == 3)//3‰ñŽ¸”sA1‰ñ¬Œ÷
 			{
-				DrawGraph(0, 0, FFFT, TRUE);
+				DrawGraph(450, 150, FFFT, TRUE);
 			}
 			else if (miss == 2)
 			{
-				DrawGraph(0, 0, TTFF, TRUE);//2‰ñŽ¸”sA2¬Œ÷a
+				DrawGraph(450, 150, TTFF, TRUE);//2‰ñŽ¸”sA2¬Œ÷a
 			}
 			else if (miss == 1)
-		{
-			DrawGraph(0, 0, TTTF, TRUE);//3‰ñ¬Œ÷A1‰ñŽ¸”sa
-		}
+			{
+				DrawGraph(450, 150, TTTF, TRUE);//3‰ñ¬Œ÷A1‰ñŽ¸”sa
+			}
 			else if (miss == 0)
-		{
-			DrawGraph(0, 0, TTTT, TRUE);//4‰ñ˜A‘±¬Œ÷a
+			{
+				DrawGraph(450, 150, TTTT, TRUE);//4‰ñ˜A‘±¬Œ÷a
+			}
 		}
-			break;
+		else if (miss == 3)//3‰ñŽ¸”sA1‰ñ¬Œ÷
+		{
+			DrawGraph(450, 150, FFFT, TRUE);
+		}
+		else if (miss == 2)
+		{
+			DrawGraph(450, 150, TTFF, TRUE);//2‰ñŽ¸”sA2¬Œ÷a
+		}
+		else if (miss == 1)
+		{
+			DrawGraph(450, 150, TTTF, TRUE);//3‰ñ¬Œ÷A1‰ñŽ¸”sa
+		}
+		else if (miss == 0)
+		{
+			DrawGraph(450, 150, TTTT, TRUE);//4‰ñ˜A‘±¬Œ÷a
+		}
+		break;
 			
 	}
-
+	DrawFormatString(50, 600, 0xffffff, "miss%d", miss);
+	DrawFormatString(50, 650, 0xffffff, "count%d", count);
 }
 
+void Nail::Draw() {
+	DrawGraph(0, 0, TTTT, TRUE);
+}
+
+void Nail::SetNailCount() {
+	count += 1;
+	if (count >= 5) {
+		count = 0;
+		if (trunflg == false) {
+			trunflg = true;
+		}
+		else {
+			trunflg = false;
+		}
+	}
+}
+
+void Nail::Update() {
+	judge = Timing::GetJudge();
+
+	if (count == 4 && fps++ >= 60) {
+		count = 0;
+	}
+}

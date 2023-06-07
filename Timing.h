@@ -9,7 +9,8 @@ private:
 	int gauge = 0;
 	int speed = 1;
 	bool numgaugeflg = true;
-	bool gaugeflg = true;
+	static bool gaugeflg;
+	static bool buttonflg;
 	int tmp = 0;
 	int judgepoint = 50;
 	static int judge;
@@ -21,7 +22,7 @@ private:
 
 	int fps;
 
-	int comp = 100;//Š®¬“x
+	int comp = 0;//Š®¬“x
 	int nailpoint = 4;//“B‘Å‚Â‰ÓŠ
 	int nailcount = 4;//“B‘Å‚Â‰ñ”
 
@@ -37,4 +38,6 @@ public:
 
 	//judge‚ğæ“¾
 	static int GetJudge() { return judge; }
+	static int GetFlg() { return gaugeflg; }
+	static int GetButtonFlg() { return buttonflg; }
 };
