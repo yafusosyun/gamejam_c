@@ -14,6 +14,7 @@
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="Result.cpp" />
+    <ClCompile Include="nailcpp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Keyboard.h" />
@@ -29,5 +30,6 @@
     <ClInclude Include="UI.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Result.h" />
+    <ClInclude Include="nail.h" />
   </ItemGroup>
 </Project>

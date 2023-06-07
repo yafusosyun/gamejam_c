@@ -54,23 +54,6 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		//sceneMng.Draw();
 
 		nail();
-
-		//‰º•ûŒü
-		if (PadInput::flgY == 0 && PadInput::inputY < -MARGIN) {
-			DrawString(0, 20, "‰º", 0xffffff);
-		}
-		//ã•ûŒü
-		if (PadInput::flgY == 0 && PadInput::inputY > MARGIN) {
-			DrawString(0, 20, "ã", 0xffffff);
-		}
-		//¶•ûŒü
-		if (PadInput::flgX == 0 && PadInput::inputX < -MARGIN) {
-			DrawString(0, 20, "¶", 0xffffff);
-		}
-		//‰E•ûŒü
-		if (PadInput::flgX == 0 && PadInput::inputX > MARGIN) {
-			DrawString(0, 20, "‰E", 0xffffff);
-		}
 		
 		fps::FpsControll_Wait();
 		ScreenFlip();
