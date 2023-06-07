@@ -2,13 +2,10 @@
 #include "PadInput.h"
 
 int HammerAnimation::HammerImage;
-int HammerAnimation::StrongSE, HammerAnimation::NormalSE, HammerAnimation::WeakSE;
-int HammerAnimation::MissSE, HammerAnimation::MissBGM;
 float HammerAnimation::pox, HammerAnimation::poy;
 float HammerAnimation::animx, HammerAnimation::animy, HammerAnimation::angle;
 float HammerAnimation::time;
 int HammerAnimation::flg;
-bool HammerAnimation::SEflg, HammerAnimation::BGMflg;
 
 void HammerAnimation::AnimInit()
 {
@@ -39,15 +36,15 @@ bool HammerAnimation::SelectAnimation(AnimSelect select, Direction direction)
 {
 	if (select == AnimSelect::Strong)
 	{
-		HitAnim(0.4, 40, 0.1, 10, AnimSelect::Strong, direction);
+		HitAnim(0.4, 40, 0.1, 10, direction);
 	}
 	if (select == AnimSelect::Normal)
 	{
-		HitAnim(0.25, 25, 0.1, 10, AnimSelect::Normal, direction);
+		HitAnim(0.25, 25, 0.1, 10, direction);
 	}	
 	if (select == AnimSelect::Weak)
 	{
-		HitAnim(0.1, 10, 0.04, 4, AnimSelect::Weak, direction);
+		HitAnim(0.1, 10, 0.04, 4, direction);
 	}
 	if (select == AnimSelect::Miss)
 	{
@@ -60,8 +57,6 @@ bool HammerAnimation::SelectAnimation(AnimSelect select, Direction direction)
 		animy = 0;
 		angle = 0;
 		flg = 0;
-		SEflg = true;
-		BGMflg = true;
 		return false;
 	}
 	else {
@@ -69,7 +64,7 @@ bool HammerAnimation::SelectAnimation(AnimSelect select, Direction direction)
 	}
 }
 
-void HammerAnimation::HitAnim(float _angle, float _y, float _bangle, float _by, AnimSelect select, Direction direction)
+void HammerAnimation::HitAnim(float _angle, float _y, float _bangle, float _by, Direction direction)
 {
 	if (direction == Direction::Right) {
 		switch (flg)
@@ -87,20 +82,6 @@ void HammerAnimation::HitAnim(float _angle, float _y, float _bangle, float _by, 
 			}
 
 		case 1:
-
-			if (select == AnimSelect::Strong && SEflg) {
-				PlaySoundMem(StrongSE, DX_PLAYTYPE_BACK);
-				SEflg = false;
-			}
-			else if (select == AnimSelect::Normal && SEflg) {
-				PlaySoundMem(NormalSE, DX_PLAYTYPE_BACK);
-				SEflg = false;
-			}
-			else if (select == AnimSelect::Weak && SEflg) {
-				PlaySoundMem(WeakSE, DX_PLAYTYPE_BACK);
-				SEflg = false;
-			}
-
 			if (time++ > 10)
 			{
 				time = 0;
@@ -142,20 +123,6 @@ void HammerAnimation::HitAnim(float _angle, float _y, float _bangle, float _by, 
 			}
 
 		case 1:
-
-			if (select == AnimSelect::Strong && SEflg) {
-				PlaySoundMem(StrongSE, DX_PLAYTYPE_BACK);
-				SEflg = false;
-			}
-			else if (select == AnimSelect::Normal && SEflg) {
-				PlaySoundMem(NormalSE, DX_PLAYTYPE_BACK);
-				SEflg = false;
-			}
-			else if (select == AnimSelect::Weak && SEflg) {
-				PlaySoundMem(WeakSE, DX_PLAYTYPE_BACK);
-				SEflg = false;
-			}
-
 			if (time++ > 10)
 			{
 				time = 0;
@@ -184,52 +151,28 @@ void HammerAnimation::HitAnim(float _angle, float _y, float _bangle, float _by, 
 
 void HammerAnimation::MissAnimation(Direction direction)
 {
-	if (direction == Direction::Right)
-	{
-		if (angle < 2.5 && flg == 0) {
-			if (SEflg)
-			{
-				PlaySoundMem(MissSE, DX_PLAYTYPE_BACK);
-				SEflg = false;
-			}
-			angle += 0.4;
-			animy += 40;
-		}
-		else {
-			if (time++ > 1.5 * 60) {
-				flg = 3;
-				time = 0;
-			}
-			if (time > 20) {
-				if (BGMflg)
-				{
-					PlaySoundMem(MissBGM, DX_PLAYTYPE_BACK);
-					BGMflg = false;
-				}
-			}
-		}
-	}
-	else if (direction == Direction::Left) {
+	if (direction == Direction::Left) {
 		if (angle > -2.5 && flg == 0) {
-			if (SEflg)
-			{
-				PlaySoundMem(MissSE, DX_PLAYTYPE_BACK);
-				SEflg = false;
-			}
 			angle -= 0.4;
 			animy += 40;
 		}
 		else {
-			if (time++ > 1.5 * 60) {
+			if (time++ > 1 * 60) {
 				flg = 3;
 				time = 0;
 			}
-			if (time > 20) {
-				if (BGMflg)
-				{
-					PlaySoundMem(MissBGM, DX_PLAYTYPE_BACK);
-					BGMflg = false;
-				}
+		}
+	}
+	else if (direction == Direction::Right)
+	{
+		if (angle < 2.5 && flg == 0) {
+			angle += 0.4;
+			animy += 40;
+		}
+		else {
+			if (time++ > 1 * 60) {
+				flg = 3;
+				time = 0;
 			}
 		}
 	}
