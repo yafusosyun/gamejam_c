@@ -9,7 +9,7 @@
 #include "InputRankingScene.h"
 #include "DrawRankingScene.h"
 #include "Ranking.h"
-
+#include "Title.h"
 
 #define _SCREEN_HEIGHT_ 720
 #define _SCREEN_WIDHT_	1280
@@ -40,10 +40,12 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 	}
 
 
+
 	SceneManager sceneMng(dynamic_cast<AbstractScene*>(new GameMain())); 
 
 
 	//SceneManager sceneMng(/*new Title*/);
+
 	HammerAnimation::AnimInit();
 
 	while (sceneMng.Update() != nullptr && ProcessMessage() != -1 && !PadInput::OnClick(XINPUT_BUTTON_BACK))
@@ -55,6 +57,7 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		
 		fps::FpsControll_Update();
 		fps::FpsControll_Draw();
+
 
 
 		
