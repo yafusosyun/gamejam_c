@@ -10,7 +10,7 @@ Title::Title()
 {
     CursorY = 0;
     Font= CreateFontToHandle("UD ÉfÉWÉ^Éã ã≥â»èëëÃ NP-B", FontSiz, 7, DX_FONTTYPE_ANTIALIASING_EDGE,-1,3);
-    TitleImage = LoadGraph("images/Title3.png");
+    TitleImage = LoadGraph("images/Title.png");
 }
 
 AbstractScene* Title::Update()
