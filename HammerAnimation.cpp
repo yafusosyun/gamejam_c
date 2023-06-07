@@ -2,7 +2,7 @@
 
 void HammerAnimation::DrawHammer()
 {
-	DrawRotaGraph(0, 0, HammerImage, TRUE);
+	/*DrawRotaGraph(0, 0, HammerImage, TRUE);*/
 }
 
 void HammerAnimation::WeakAnimation()

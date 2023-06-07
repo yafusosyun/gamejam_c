@@ -38,6 +38,7 @@ AbstractScene* Timing::Update() {
 		//åÎç∑10à»ì‡Ç»ÇÁgood
 		else if (judgepoint - 10 < tmp && judgepoint + 10 > tmp) {
 			judge = 1;
+			if(gaugeflg == true)comp = comp - 1;
 		}
 		//ÇªÇÍà»äOÇ»ÇÁmiss
 		else {
@@ -45,7 +46,10 @@ AbstractScene* Timing::Update() {
 			if (speed > 1) {
 				speed -= 1;
 			}
+			if (gaugeflg == true)comp = comp - 10;
 		}
+		if (comp < 0)comp = 0;//â∫å¿Ç0
+		
 
 		//à⁄ìÆÇé~ÇﬂÇÈ
 		if (gaugeflg == true) {
@@ -89,6 +93,8 @@ void Timing::Draw() const {
 	DrawFormatString(20, 200, 0xffffff, "%d", tmp);
 	DrawFormatString(20, 350, 0xffffff, "%d", fps);
 	DrawFormatString(20, 250, 0xffffff, "%d", gaugeflg);
+	DrawFormatString(20, 280, 0xff00ff, "%d", comp);
+	DrawFormatString(20, 270, 0x0000ff, "%d",100 / (nailcount * nailpoint));
 	switch (judge)
 	{
 	case 0:
