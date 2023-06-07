@@ -152,31 +152,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-
     <ClCompile Include="nailcpp.cpp" />
     <ClCompile Include="fps.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="HammerAnimation.cpp" />
     <ClCompile Include="GameEnd.cpp" />
-
-    <ClCompile Include="DrawRankingScene.cpp" />
-    <ClCompile Include="InputRankingScene.cpp" />
-
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Timing.cpp" />
-
     <ClCompile Include="Title.cpp" />
-
-
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScene.h" />
-
     <ClInclude Include="fps.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="HammerAnimation.h" />
@@ -186,13 +177,6 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Timing.h" />
     <ClInclude Include="Title.h" />
-
-    <ClInclude Include="DrawRankingScene.h" />
-    <ClInclude Include="InputRankingScene.h" />
-    <ClInclude Include="PadInput.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Timing.h" />
-
     <ClInclude Include="UI.h" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="Retult.cpp" />
