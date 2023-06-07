@@ -2,15 +2,15 @@
 #include "DrawRankingScene.h"
 #include "PadInput.h"
 
-InputRankingScene::InputRankingScene(/*int _score*/) {
-	/*score = _score;
+InputRankingScene::InputRankingScene(int _score) {
+	score = _score;
 	cursorPoint = { 0, 0 };
 	ranking.ReadRanking();
 	for (int i = 0; i < 5; i++) {
 		rankingData[i] = ranking.GetRankingData(i);
 	}
 
-	image = LoadGraph("Resources/images/InputRanking.png");*/
+	
 }
 
 AbstractScene* InputRankingScene::Update() {
@@ -60,6 +60,13 @@ AbstractScene* InputRankingScene::Update() {
 		else {
 			name += keyboard[cursorPoint.y][cursorPoint.x];
 		}
+	}
+	if (PadInput::OnClick(XINPUT_BUTTON_B) == 1) {
+		
+			ranking.WriteRanking(name, score);
+			
+			return new DrawRankingScene(score);
+		
 	}
 	return this;
 }
