@@ -13,5 +13,6 @@ AbstractScene* Result::Update() {	//描画以外の更新・変数の値の初期化・前の画面へ
 
 void Result::Draw()const		//描画に関することだけ
 {
-	DrawFormatString(20, 110, GetColor(255, 255, 255), "結果は・・・");
+	DrawFormatString(20, 110, GetColor(255, 255, 255), "スコア");
+	DrawFormatString(20, 170, GetColor(255, 255, 255), "-- キーでランキングへ --");
 }
