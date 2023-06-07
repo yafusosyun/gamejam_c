@@ -114,75 +114,75 @@ void nail(void)
 			DrawGraph(450, 150, T, TRUE);//1回目成功
 			break;
 			
-		case 2://釘を打つ2回目
-			if (a == 0)
+	case 2://釘を打つ2回目
+		if (a == 0)
+		{
+			if (miss == 1)
 			{
-				if (miss == 1)
-				{
-					DrawGraph(450, 150, FF, TRUE);//2回連続失敗
-					miss = 2;
-				}
+				DrawGraph(450, 150, FF, TRUE);//2回連続失敗
+				miss = 2;
 			}
-				else if(miss == 1)
-				{
-					DrawGraph(450, 150, TF, TRUE);//2回目成功
-					miss = 2;
-				}
-				else if (miss == 0)
+		}
+			else if(miss == 1)
 			{
-				DrawGraph(450, 150, TT, TRUE);//2回目連続成功
+				DrawGraph(450, 150, TF, TRUE);//2回目成功
+				miss = 2;
 			}
-				break;
+			else if (miss == 0)
+		{
+			DrawGraph(450, 150, TT, TRUE);//2回目連続成功
+		}
+			break;
 
-		case 3://釘を打つ3回目
-			if (a == 0)
+	case 3://釘を打つ3回目
+		if (a == 0)
+		{
+			if (miss == 2)
 			{
-				if (miss == 2)
-				{
-					DrawGraph(450, 150, FFF, TRUE);//3回連続失敗
-				}
+				DrawGraph(450, 150, FFF, TRUE);//3回連続失敗
+			}
+		}
+		else if (miss == 2)
+		{
+			DrawGraph(450, 150, FFT, TRUE);//2回失敗、1回成功
+		}
+		else if (miss == 1)
+		{
+			DrawGraph(450, 150, TTF, TRUE);//2回成功、1回失敗
+		}
+		else if (miss == 0)
+		{
+			DrawGraph(450, 150, TTT, TRUE);//3回連続成功
+		}
+		break;
+
+	case 4://釘を打つ4回目（最後の埋まるところ）
+		if (a == 0)
+		{
+			if (miss == 3)
+			{
+				DrawTurnGraph(450, 150, FFFF, TRUE);//4回連続ミス
+			}
+		}
+			else if (miss == 3)//3回失敗、1回成功
+			{
+				DrawGraph(0, 0, FFFT, TRUE);
 			}
 			else if (miss == 2)
 			{
-				DrawGraph(450, 150, FFT, TRUE);//2回失敗、1回成功
+				DrawGraph(0, 0, TTFF, TRUE);//2回失敗、2成功a
 			}
 			else if (miss == 1)
-			{
-				DrawGraph(450, 150, TTF, TRUE);//2回成功、1回失敗
-			}
-			else if (miss == 0)
-			{
-				DrawGraph(450, 150, TTT, TRUE);//3回連続成功
-			}
-			break;
-
-		case 4://釘を打つ4回目（最後の埋まるところ）
-			if (a == 0)
-			{
-				if (miss == 3)
-				{
-					DrawTurnGraph(450, 150, FFFF, TRUE);//4回連続ミス
-				}
-			}
-				else if (miss == 3)//3回失敗、1回成功
-				{
-					DrawGraph(0, 0, FFFT, TRUE);
-				}
-				else if (miss == 2)
-				{
-					DrawGraph(0, 0, TTFF, TRUE);//2回失敗、2成功a
-				}
-				else if (miss == 1)
-			{
-				DrawGraph(0, 0, TTTF, TRUE);//3回成功、1回失敗a
-			}
-				else if (miss == 0)
-			{
-				DrawGraph(0, 0, TTTT, TRUE);//4回連続成功a
-			}
-				break;
-			
+		{
+			DrawGraph(0, 0, TTTF, TRUE);//3回成功、1回失敗a
 		}
+			else if (miss == 0)
+		{
+			DrawGraph(0, 0, TTTT, TRUE);//4回連続成功a
+		}
+			break;
+			
+	}
 
 }
 
