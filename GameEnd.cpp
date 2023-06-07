@@ -1,7 +1,6 @@
 #include "GameEnd.h"
-#include "DxLib.h"
 
-#define WINDOW_CENTER 1280*0.35
+#define WINDOW_CENTER 1280*0.45
 #define WINDOW_HEIGHT 720*0.4
 
 GameEnd::GameEnd()
@@ -35,12 +34,12 @@ AbstractScene* GameEnd::Update()
 void GameEnd::Draw() const
 {
 	DrawGraph(0, 0, EndImage, FALSE);
-	DrawStringToHandle(static_cast<int>(WINDOW_CENTER), SentenceY[0], "制作", 0x4169E1, Font, 0xffffff);
-	DrawStringToHandle(static_cast<int>(WINDOW_CENTER)-50, SentenceY[1]+FontSiz, "Cグループ", 0x4169E1, Font, 0xffffff);
-	DrawStringToHandle(static_cast<int>(WINDOW_CENTER) - 50, SentenceY[2] + FontSiz, "利用素材サイト", 0x4169E1, Font, 0xffffff);
-	DrawStringToHandle(static_cast<int>(WINDOW_CENTER) - 100, SentenceY[3] + FontSiz, "画像", 0x4169E1, Font, 0xffffff);
-	DrawStringToHandle(static_cast<int>(WINDOW_CENTER) - 100, SentenceY[4] + FontSiz, "BGM・SE", 0x4169E1, Font, 0xffffff);
-	DrawStringToHandle(static_cast<int>(WINDOW_CENTER)- 100, SentenceY[5] + FontSiz, "Thank you for playing!", 0x4169E1, Font, 0xffffff);
+	DrawStringToHandle(static_cast<int>(WINDOW_CENTER)-5, SentenceY[0], "制作", 0x4169E1, Font, 0xffffff);
+	DrawStringToHandle(static_cast<int>(WINDOW_CENTER)-70, SentenceY[1]+FontSiz, "Cグループ", 0x4169E1, Font, 0xffffff);
+	DrawStringToHandle(static_cast<int>(WINDOW_CENTER)-100, SentenceY[2] + FontSiz, "利用素材サイト", 0x4169E1, Font, 0xffffff);
+	DrawStringToHandle(static_cast<int>(WINDOW_CENTER)-5, SentenceY[3] + FontSiz, "画像", 0x4169E1, Font, 0xffffff);
+	DrawStringToHandle(static_cast<int>(WINDOW_CENTER)-80, SentenceY[4] + FontSiz, "BGM・SE", 0x4169E1, Font, 0xffffff);
+	DrawStringToHandle(static_cast<int>(WINDOW_CENTER)-240, SentenceY[5] + FontSiz, "Thank you for playing!", 0x4169E1, Font, 0xffffff);
 
 	//デバック
 	DrawFormatString(0, 0, 0xffffff, "%d", Time);
