@@ -4,8 +4,6 @@
 #include "UI.h"
 
 int Timing::judge = -1;
-bool Timing::gaugeflg = true;
-bool Timing::buttonflg = false;
 
 AbstractScene* Timing::Update() {
 
@@ -13,7 +11,6 @@ AbstractScene* Timing::Update() {
 
 	//Aボタンを押すまで0～100を行き来する
 	if (PadInput::OnClick(XINPUT_BUTTON_A) == 0) {
-		buttonflg = false;
 		//0 -> 100
 		if (gauge < 100 && numgaugeflg == true && gaugeflg == true) {
 			gauge += speed;
@@ -30,13 +27,38 @@ AbstractScene* Timing::Update() {
 				numgaugeflg = true;
 			}
 		}
+	}
+	else {
+		tmp = gauge;
+		//50を中心とし、誤差1つ以内ならgreat
+		if (judgepoint - 1 <= tmp && judgepoint + 1 >= tmp) {
+			judge = 2;
+			speed += 1;
+		}
+		//誤差10以内ならgood
+		else if (judgepoint - 10 < tmp && judgepoint + 10 > tmp) {
+			judge = 1;
+			if(gaugeflg == true)comp = comp - 1;
+		}
+		//それ以外ならmiss
+		else {
+			judge = 0;
+			if (speed > 1) {
+				speed -= 1;
+			}
+			if (gaugeflg == true)comp = comp - 10;
+		}
+		if (comp < 0)comp = 0;//下限を0
+		
 
-		if (gaugeflg == false && fps++ >= 60) {
-			fps = 0;
+		//移動を止める
+		if (gaugeflg == true) {
+			gaugeflg = false;
+		}
+		else if (gaugeflg == false) {
 			gaugeflg = true;
 			judgepoint = GetRand(100);
-			speed = GetRand(5) + 1;
-			
+			judge = 0;
 			goodleft = ((bar / 100) * judgepoint - 100);
 			if (goodleft < 0) {
 				goodleft = 0;
@@ -58,48 +80,6 @@ AbstractScene* Timing::Update() {
 			}
 		}
 	}
-	else {
-		if (gaugeflg) {
-			buttonflg = true;
-			tmp = gauge;
-			//50を中心とし、誤差1つ以内ならgreat
-			if (judgepoint - 1 <= tmp && judgepoint + 1 >= tmp) {
-				judge = 2;
-				speed += 1;
-				comp += 10;
-				if (comp > 100) {
-					comp = 100;
-				}
-			}
-			//誤差10以内ならgood
-			else if (judgepoint - 10 < tmp && judgepoint + 10 > tmp) {
-				judge = 1;
-				comp += 5;
-				if (comp > 100) {
-					comp = 100;
-				}
-			}
-			//それ以外ならmiss
-			else {
-				judge = 0;
-				/*if (speed > 1) {
-					speed -= 1;
-				}*/
-				comp -= 3;
-				if (comp < 0) {
-					comp = 0;
-				}
-				
-			}
-			if (comp < 0)comp = 0;//下限を0
-
-
-			//移動を止める
-			if (gaugeflg == true) {
-				gaugeflg = false;
-			}
-		}
-	}
 
 	return this;
 }
@@ -110,11 +90,9 @@ void Timing::Draw() const {
 	DrawBox(greatleft + 20, 100, greatright + 20, 150, 0xff00ff, true);
 	DrawTriangle((gauge * (bar / 100)), 80, (gauge * (bar / 100)) + 40, 80, (gauge * (bar / 100)) + 20, 100, 0xffffff, true);
 	DrawBox((gauge * (bar / 100)) + 20 - 2, 100, (gauge * (bar / 100)) + 20 + 2, 150, 0xffffff, true);
-	DrawFormatString(990, 400, 0xffffff, "%d %%", comp);
-	DrawString(990, 430, "完成度", 0xffffff);
 	DrawFormatString(20, 200, 0xffffff, "%d", tmp);
 	DrawFormatString(20, 350, 0xffffff, "%d", fps);
-	DrawFormatString(20, 250, 0xffffff, "%d", judge);
+	DrawFormatString(20, 250, 0xffffff, "%d", gaugeflg);
 	DrawFormatString(20, 280, 0xff00ff, "%d", comp);
 	DrawFormatString(20, 270, 0x0000ff, "%d",100 / (nailcount * nailpoint));
 	switch (judge)

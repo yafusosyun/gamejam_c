@@ -38,7 +38,6 @@ void UI::DrawScore()
 	SetFontSize(50);
 	DrawFormatString(990, 290, 0xffffff, "%d", gScore);
 	DrawString(990, 230, "Score", 0xffffff);
-	
 }
 
 int UI::GetTime() 
