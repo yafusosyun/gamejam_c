@@ -6,6 +6,7 @@
 #include "HammerAnimation.h"
 #include "UI.h"
 #include "GameMain.h"
+#include "nail.h"
 
 #define _SCREEN_HEIGHT_ 720
 #define _SCREEN_WIDHT_	1280
@@ -34,7 +35,7 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 	{
 		return -1;
 	}
-
+	LoadImages();
 
 	SceneManager sceneMng(dynamic_cast<AbstractScene*>(new GameMain())); 
 
@@ -54,7 +55,9 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 
 		hammer.DrawHammer();
 
-		sceneMng.Draw();
+		//sceneMng.Draw();
+
+		nail();
 
 		
 		//‰º•ûŒü

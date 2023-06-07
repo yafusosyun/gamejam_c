@@ -12,6 +12,8 @@
     <ClCompile Include="Retult.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="nailcpp.cpp" />
+    <ClCompile Include="GameEnd.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScene.h" />
@@ -25,10 +27,6 @@
     <ClInclude Include="Result.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="Title.h" />
-	  
-    <ClCompile Include="ソース.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="UI.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -44,9 +42,8 @@
     <ClCompile Include="PadInput.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="GameEnd.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
+    <ClInclude Include="GameEnd.h" />
+    <ClInclude Include="nail.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI.h">
@@ -67,9 +64,6 @@
     <ClInclude Include="SceneManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="GameEnd.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ranking.h">
@@ -78,6 +72,5 @@
     <ClInclude Include="Result.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-
   </ItemGroup>
 </Project>

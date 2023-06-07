@@ -152,13 +152,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-
+    <ClCompile Include="nailcpp.cpp" />
     <ClCompile Include="fps.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="HammerAnimation.cpp" />
-
     <ClCompile Include="GameEnd.cpp" />
-
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -169,14 +167,12 @@
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
-
     <ClInclude Include="AbstractScene.h" />
     <ClInclude Include="fps.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="HammerAnimation.h" />
-
     <ClInclude Include="GameEnd.h" />
-
+    <ClInclude Include="nail.h" />
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Timing.h" />
