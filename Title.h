@@ -7,13 +7,15 @@ class Title :
 private:
 	int CursorY;  //カーソルの座標
 	int Font;     //フォント
-	int FontSiz;  //フォントサイズ
+	const int FontSiz = 65;  //フォントサイズ
+	int TitleImage;  //タイトル画像
 
 public:
 	Title();
 	~Title()
 	{
 		DeleteFontToHandle(Font);
+		DeleteGraph(TitleImage);
 	}
 
 	//描画以外の更新を実装

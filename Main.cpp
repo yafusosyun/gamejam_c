@@ -3,6 +3,7 @@
 #include "PadInput.h"
 #include "fps.h"
 #include "HammerAnimation.h"
+#include "Title.h"
 
 #define _SCREEN_HEIGHT_ 720
 #define _SCREEN_WIDHT_	1280
@@ -32,12 +33,12 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		return -1;
 	}
 
-	//SceneManager sceneMng(/*new Title*/);
+	SceneManager sceneMng(new Title);
 	HammerAnimation::AnimInit();
 	bool f = false;
 	bool h = false;
 
-	while (/*sceneMng.Update() != nullptr &&*/ ProcessMessage() != -1 && !PadInput::OnClick(XINPUT_BUTTON_BACK))
+	while (sceneMng.Update() != nullptr && ProcessMessage() != -1 && !PadInput::OnClick(XINPUT_BUTTON_BACK))
 	{
 		ClearDrawScreen();
 		PadInput::UpdateKey();
@@ -46,7 +47,7 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		fps::FpsControll_Update();
 		fps::FpsControll_Draw();
 
-		/*sceneMng.Draw();*/
+		sceneMng.Draw();
 
 		HammerAnimation::DrawHammer(500, 300);
 		if (PadInput::OnClick(XINPUT_BUTTON_A)) {
