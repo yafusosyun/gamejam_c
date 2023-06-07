@@ -21,8 +21,6 @@ private:
 	int fps;
 
 	int comp = 100;//完成度
-	int nailpoint = 4;//釘打つ箇所
-	int nailcount = 4;//釘打つ回数
 
 public:
 	//デスストラクタ
