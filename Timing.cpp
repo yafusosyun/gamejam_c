@@ -14,7 +14,8 @@ AbstractScene* Timing::Update() {
 		//0 -> 100
 		if (gauge < 100 && numgaugeflg == true && gaugeflg == true) {
 			gauge += speed;
-			if (gauge >= 100) {
+			if (gauge >= 99) {
+				gauge = 99;
 				numgaugeflg = false;
 			}
 		}
@@ -22,6 +23,7 @@ AbstractScene* Timing::Update() {
 		else if (gauge > 0 && numgaugeflg == false && gaugeflg == true) {
 			gauge -= speed;
 			if (gauge <= 0) {
+				gauge = 0;
 				numgaugeflg = true;
 			}
 		}
@@ -36,6 +38,7 @@ AbstractScene* Timing::Update() {
 		//Œë·10ˆÈ“à‚È‚çgood
 		else if (judgepoint - 10 < tmp && judgepoint + 10 > tmp) {
 			judge = 1;
+			if(gaugeflg == true)comp = comp - 1;
 		}
 		//‚»‚êˆÈŠO‚È‚çmiss
 		else {
@@ -43,7 +46,10 @@ AbstractScene* Timing::Update() {
 			if (speed > 1) {
 				speed -= 1;
 			}
+			if (gaugeflg == true)comp = comp - 10;
 		}
+		if (comp < 0)comp = 0;//‰ºŒÀ‚ğ0
+		
 
 		//ˆÚ“®‚ğ~‚ß‚é
 		if (gaugeflg == true) {
@@ -87,6 +93,8 @@ void Timing::Draw() const {
 	DrawFormatString(20, 200, 0xffffff, "%d", tmp);
 	DrawFormatString(20, 350, 0xffffff, "%d", fps);
 	DrawFormatString(20, 250, 0xffffff, "%d", gaugeflg);
+	DrawFormatString(20, 280, 0xff00ff, "%d", comp);
+	DrawFormatString(20, 270, 0x0000ff, "%d",100 / (nailcount * nailpoint));
 	switch (judge)
 	{
 	case 0:

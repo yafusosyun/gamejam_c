@@ -3,6 +3,9 @@
 #include "PadInput.h"
 #include "fps.h"
 #include "HammerAnimation.h"
+#include "UI.h"
+#include "GameMain.h"
+#include "nail.h"
 
 #define _SCREEN_HEIGHT_ 720
 #define _SCREEN_WIDHT_	1280
@@ -31,11 +34,12 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 	{
 		return -1;
 	}
+	LoadImages();
+
+	SceneManager sceneMng(dynamic_cast<AbstractScene*>(new GameMain())); 
 
 	//SceneManager sceneMng(/*new Title*/);
 	HammerAnimation::AnimInit();
-	bool f = false;
-	bool h = false;
 
 	while (/*sceneMng.Update() != nullptr &&*/ ProcessMessage() != -1 && !PadInput::OnClick(XINPUT_BUTTON_BACK))
 	{
@@ -47,8 +51,9 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		fps::FpsControll_Draw();
 
 		/*sceneMng.Draw();*/
+		//sceneMng.Draw();
 
-
+		nail();
 
 		//‰º•ûŒü
 		if (PadInput::flgY == 0 && PadInput::inputY < -MARGIN) {

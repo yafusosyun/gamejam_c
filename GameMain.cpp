@@ -9,15 +9,17 @@ UI ui;
 
 AbstractScene* GameMain::Update() {
 	timing.Update();
+	ui.CountDown();
 	if (PadInput::OnClick(XINPUT_BUTTON_A)) {
 		ui.Score();
 
 	}
-
+	
 	return this;
 }
 
 void GameMain::Draw() const {
 	timing.Draw();
 	ui.DrawScore();
+	ui.DrawCountDown();
 }
