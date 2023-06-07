@@ -1,127 +1,58 @@
 #include"DxLib.h"
 #include"Ranking.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
-#define RANKING_DATA 5    // ランキング上位５人 
-int g_RankingImg;   // ランキング画像
-struct RankingData g_Ranking[RANKING_DATA];    // ランキングデータの変数宣言
+#define RANKING_FILE_NAME "Ranking.txt"
 
-//ランキング描画
-void DrawRanking(int key, int& gamemode)
-{
-	// ランキング画像表示
-	DrawGraph(0, 0, g_RankingImg, FALSE);
+void Ranking::ReadRanking() {
+	std::ifstream ifs(RANKING_FILE_NAME);
 
-	// ランキング一覧を表示
-	SetFontSize(40);
-	for (int i = 0; i < RANKING_DATA; i++)
-	{
-		DrawFormatString(450, 200 + i * 86, 0xffffff, "%-10s  %10d", g_Ranking[i].name, g_Ranking[i].score);
-	}
-
-	SetFontSize(30);
-}
-
-/******************************************
- * ランキング並べ替え
- ******************************************/ 
-	void SortRanking(void)
-{
-	int i, j;
-	RankingData work;
-
-	// 選択法ソート
-	for (i = 0; i < RANKING_DATA - 1; i++)
-	{
-		for (j = i + 1; j < RANKING_DATA; j++)
-		{
-			if (g_Ranking[i].score <= g_Ranking[j].score)
-			{
-				work = g_Ranking[i];
-				g_Ranking[i] = g_Ranking[j];
-				g_Ranking[j] = work;
+	std::string line;
+	for (int i = 0; std::getline(ifs, line); i++) {
+		std::istringstream stream(line);
+		std::string str;
+		for (int j = 0; std::getline(stream, str, ','); j++) {
+			if (j == 0) {
+				rankingData[i].no = std::stoi(str);
 			}
-		}
-	}
-	// 順位付け
-	for (i = 0; i < RANKING_DATA; i++)
-	{
-		g_Ranking[i].no = 1;
-	}
-	// 得点が同じ場合は、同じ順位とする
-	// 同順位があった場合の次の順位はデータ個数が加算された順位とする
-	for (i = 0; i < RANKING_DATA - 1; i++)
-	{
-		for (j = i + 1; j < RANKING_DATA; j++)
-		{
-			if (g_Ranking[i].score > g_Ranking[j].score)
-			{
-				g_Ranking[j].no++;
+			else if (j == 1) {
+				rankingData[i].name = str;
+			}
+			else {
+				rankingData[i].score = std::stol(str);
 			}
 		}
 	}
 }
 
-/***********************************************
- * ランキングデータの保存
- ***********************************************/
-	int  SaveRanking(void)
-	{
-		FILE* fp;
-#pragma warning(disable:4996)
+void Ranking::WriteRanking(std::string _name, long int _score) {
+	std::ofstream ofs(RANKING_FILE_NAME);
 
-		// ファイルオープン
-		if ((fp = fopen("dat/rankingdata.txt", "w")) == NULL)
-		{
-			/* エラー処理 */
-			printf("Ranking Data Error\n");
-			return -1;
+	rankingData[4].name = _name;
+	rankingData[4].score = _score;
+	for (int i = 0; i < 4; i++) {
+		for (int j = i + 1; j < 5; j++) {
+			if (rankingData[i].score < rankingData[j].score) {
+				RANKING_DATA temp = rankingData[i];
+				rankingData[i] = rankingData[j];
+				rankingData[j] = temp;
+			}
 		}
-
-		// ランキングデータ分配列データを書き込む
-		for (int i = 0; i < RANKING_DATA; i++)
-		{
-			fprintf(fp, "%2d %10s %10d\n", g_Ranking[i].no, g_Ranking[i].name, g_Ranking[i].score);
-		}
-
-		// ファイルクローズ
-		fclose(fp);
-
-		return 0;
-
 	}
 
-/*************************************
- * ランキングデータ読み込み
-*************************************/
-	int ReadRanking(void)
-	{
-		FILE* fp;
-#pragma warning(disable:4996)
-
-		// ファイルオープン
-		if ((fp = fopen("dat/rankingdata.txt", "r")) == NULL)
-		{
-			// エラー処理
-			printf("Ranking Data Error\n");
-			return -1;
+	rankingData[0].no = 1;
+	for (int i = 1; i < 5; i++) {
+		if (rankingData[i - 1].score == rankingData[i].score) {
+			rankingData[i].no = rankingData[i - 1].no;
 		}
-
-		// ランキングデータ配分列データを読み込む
-		for (int i = 0; i < RANKING_DATA; i++)
-		{
-			int dammy = fscanf(fp, "%2d %10s %10d", &g_Ranking[i].no, g_Ranking[i].name, &g_Ranking[i].score);
+		else {
+			rankingData[i].no = i + 1;
 		}
-
-		// ファイルクローズ
-		fclose(fp);
-
-		return 0;
 	}
-		//ランキング画像読み込み
-		int LoadRankingImage()
-		{
-			// ランキング画像読込
-			if ((g_RankingImg = LoadGraph("images/Ranking/input.png")) == -1) return -1;
 
-			return 0;
-		}
+	for (int i = 0; i < 5; i++) {
+		ofs << rankingData[i].no << "," << rankingData[i].name.c_str() << "," << rankingData[i].score << std::endl;
+	}
+}

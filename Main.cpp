@@ -5,6 +5,9 @@
 #include "fps.h"
 #include "HammerAnimation.h"
 #include "UI.h"
+#include "InputRankingScene.h"
+#include "DrawRankingScene.h"
+#include "Ranking.h"
 #include "GameMain.h"
 #include "nail.h"
 
@@ -67,6 +70,10 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		}
 		
 		fps::FpsControll_Wait();
+		ClearDrawScreen();
+
+		sceneMng.Draw();
+
 		ScreenFlip();
 	}
 
