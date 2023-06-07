@@ -2,7 +2,12 @@
 #include"AbstractScene.h"
 
 class Result : public AbstractScene {
+private:
+	int Score, Time;
+	bool flg;
+
 public:
+	Result(int score,int time);
 	//デストラクタ
 	virtual ~Result() {};
 
@@ -11,6 +16,8 @@ public:
 
 	//描画に関することを実装する
 	virtual void Draw()const override;
+
+	void getResult(int score, int time);
 };
 
 

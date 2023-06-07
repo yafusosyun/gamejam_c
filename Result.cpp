@@ -4,15 +4,32 @@
 #include"Ranking.h"
 #include"PadInput.h"
 
+Result::Result(int score, int time) {
+	Score = score;
+	Time = time;
+	flg = true;
+};
+
 AbstractScene* Result::Update() {	//描画以外の更新・変数の値の初期化・前の画面への上書き
-	if (PadInput::OnClick(XINPUT_BUTTON_A)) {	//もし、Aキーが押されたら
-		return new GameMain();		//ゲームメインに移動する
+	if (flg) {
+		Score += Time / 60 * 10;
+		flg = false;
 	}
-	return this;					//それ以外ならこのシーンを描画し続ける
+
+	if (PadInput::OnClick(XINPUT_BUTTON_A)) {	//もし、Aキーが押されたら
+		return new GameMain();					//ゲームメインに移動する
+	}
+	return this;								//それ以外ならこのシーンを描画し続ける
 }
 
 void Result::Draw()const		//描画に関することだけ
 {
-	DrawFormatString(20, 110, GetColor(255, 255, 255), "スコア");
+	DrawFormatString(20, 110, GetColor(255, 255, 255), "スコア:%d",Score);
+	DrawFormatString(20, 140, GetColor(255, 255, 255), "残り時間:%d",Time);
 	DrawFormatString(20, 170, GetColor(255, 255, 255), "-- キーでランキングへ --");
+}
+
+void Result::getResult(int score, int time) {
+	score = Score;
+	time = Time;
 }
