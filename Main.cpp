@@ -40,6 +40,8 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 
 	//SceneManager sceneMng(/*new Title*/);
 	HammerAnimation::AnimInit();
+	bool f = false;
+	bool h = false;
 
 	while (/*sceneMng.Update() != nullptr &&*/ ProcessMessage() != -1 && !PadInput::OnClick(XINPUT_BUTTON_BACK))
 	{
@@ -52,6 +54,20 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 
 		/*sceneMng.Draw();*/
 		//sceneMng.Draw();
+
+		HammerAnimation::DrawHammer(500, 300);
+		if (PadInput::OnClick(XINPUT_BUTTON_A) && !h) {
+			f = true;
+		}
+		if (PadInput::OnClick(XINPUT_BUTTON_B) && !f) {
+			h = true;
+		}
+		if (f) {
+			f = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Right);
+		}
+		if (h) {
+			h = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Left);
+		}
 
 		nail();
 		
