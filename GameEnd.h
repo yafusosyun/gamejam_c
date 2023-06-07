@@ -21,10 +21,10 @@ public:
 private:
 	int Font;      //フォント
 	int EndImage;  //背景画像
-	int SentenceY[6] = { 730,760,840,910,980,1100 };
+	int SentenceY[9] = { 730,760,840,910,980,1100,1170,1240,1500 };
 	int Time;
-	const int MaxSentence = 6;
-	const int EndTime = 1100;  //終わる時間  予定：１分
+	const int MaxSentence = 9;
+	const int EndTime = 1200;  //終わる時間  予定：１分
 	const int FontSiz = 50;   //フォントサイズ
 };
 
