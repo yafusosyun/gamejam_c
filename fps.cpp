@@ -19,7 +19,7 @@ bool fps::FpsControll_Update() {
     if (mCount == 0) { //1フレーム目なら時刻を記憶
         mStartTime = GetNowCount();
     }
-    if (mCount == N) { //60フレーム目なら平均を計算する
+    if (mCount == N) { //40フレーム目なら平均を計算する
         int t = GetNowCount();
         mFps = 1000.f / ((t - mStartTime) / (float)N);
         mCount = 0;

@@ -13,11 +13,14 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Ranking.cpp" />
+
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="GameEnd.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="nail.cpp" />
+
+    
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Keyboard.h" />
@@ -37,6 +40,7 @@
     <ClInclude Include="UI.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Result.h" />
+
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="Title.h" />
     <ClCompile Include="UI.cpp">
@@ -87,4 +91,5 @@
     <ClInclude Include="InputRankingScene.h" />
     <ClInclude Include="DrawRankingScene.h" />
   </ItemGroup>
+
 </Project>

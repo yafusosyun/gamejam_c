@@ -165,7 +165,9 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+
     <ClCompile Include="nail.cpp" />
+
     <ClCompile Include="PadInput.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Timing.cpp" />

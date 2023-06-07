@@ -46,10 +46,36 @@ void PadInput::StickControl()
 ////書き方
 ////メニューカーソル移動処理
 ////下方向
-//if (PadInput::flgY == 0 && PadInput::JoyPadY < -MARGIN) {
-//    if (++MenuNumY > 2) MenuNumY = 0;
+//if (PadInput::flgY == 0 && PadInput::inputY < -MARGIN) {
+//    //処理をかく
 //}
 ////上方向
-//if (PadInput::flgY == 0 && PadInput::JoyPadY > MARGIN) {
-//    if (--MenuNumY < 0) MenuNumY = 2;
+//if (PadInput::flgY == 0 && PadInput::inputY > MARGIN) {
+//    //処理をかく
 //}
+////左方向
+//if (PadInput::flgX == 0 && PadInput::inputX < -MARGIN) {
+//    //処理をかく
+//}
+////右方向
+//if (PadInput::flgX == 0 && PadInput::inputX > MARGIN) {
+//    //処理をかく
+//}
+
+//OnClick,OnRelece,OnPresseに渡す引数
+/***********
+XINPUT_BUTTON_DPAD_UP		(0)	// デジタル方向ボタン上
+XINPUT_BUTTON_DPAD_DOWN		(1)	// デジタル方向ボタン下
+XINPUT_BUTTON_DPAD_LEFT		(2)	// デジタル方向ボタン左
+XINPUT_BUTTON_DPAD_RIGHT	(3)	// デジタル方向ボタン右
+XINPUT_BUTTON_START		(4)	// STARTボタン
+XINPUT_BUTTON_BACK		(5)	// BACKボタン
+XINPUT_BUTTON_LEFT_THUMB	(6)	// 左スティック押し込み
+XINPUT_BUTTON_RIGHT_THUMB	(7)	// 右スティック押し込み
+XINPUT_BUTTON_LEFT_SHOULDER	(8)	// LBボタン
+XINPUT_BUTTON_RIGHT_SHOULDER	(9)	// RBボタン
+XINPUT_BUTTON_A			(12)	// Aボタン
+XINPUT_BUTTON_B			(13)	// Bボタン
+XINPUT_BUTTON_X			(14)	// Xボタン
+XINPUT_BUTTON_Y			(15)	// Yボタン
+*************/

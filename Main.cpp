@@ -1,6 +1,5 @@
 #include "DxLib.h"
 #include "SceneManager.h"
-#include "Timing.h"
 #include "PadInput.h"
 #include "fps.h"
 #include "HammerAnimation.h"
@@ -45,10 +44,9 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 
 
 	//SceneManager sceneMng(/*new Title*/);
-	HammerAnimation hammer;
+	HammerAnimation::AnimInit();
 
-
-	while (sceneMng.Update() != nullptr && ProcessMessage() != -1)
+	while (sceneMng.Update() != nullptr && ProcessMessage() != -1 && !PadInput::OnClick(XINPUT_BUTTON_BACK))
 	{
 		ClearDrawScreen();
 
@@ -56,10 +54,10 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		PadInput::StickControl();
 		
 		fps::FpsControll_Update();
-
 		fps::FpsControll_Draw();
 
-		hammer.DrawHammer();
+
+		
 
 		sceneMng.Draw();
 
@@ -72,6 +70,11 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		if (PadInput::flgY == 0 && PadInput::inputY > MARGIN) {
 			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
 		}
+
+		/*sceneMng.Draw();*/
+		//sceneMng.Draw();
+
+
 		
 		fps::FpsControll_Wait();
 		ScreenFlip();
