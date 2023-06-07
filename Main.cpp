@@ -74,7 +74,6 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		/*sceneMng.Draw();*/
 		//sceneMng.Draw();
 
-		nail();
 		
 		fps::FpsControll_Wait();
 		ScreenFlip();

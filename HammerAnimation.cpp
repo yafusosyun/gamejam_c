@@ -6,6 +6,9 @@ float HammerAnimation::pox, HammerAnimation::poy;
 float HammerAnimation::animx, HammerAnimation::animy, HammerAnimation::angle;
 float HammerAnimation::time;
 int HammerAnimation::flg;
+int HammerAnimation::StrongSE, HammerAnimation::NormalSE, HammerAnimation::WeakSE;
+int HammerAnimation::MissSE, HammerAnimation::MissBGM;
+bool HammerAnimation::SEflg, HammerAnimation::BGMflg;
 
 void HammerAnimation::AnimInit()
 {

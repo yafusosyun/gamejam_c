@@ -3,10 +3,9 @@
 #include"Timing.h"
 #include"UI.h"
 #include"PadInput.h"
-
 #include"nail.h"
-
 #include"Result.h"
+#include"HammerAnimation.h"
 
 
 Timing timing;
@@ -38,8 +37,8 @@ AbstractScene* GameMain::Update() {
 void GameMain::Draw() const {
 	timing.Draw();
 	ui.DrawScore();
-
 	ui.DrawCountDown();
 	nail.nail();
+	HammerAnimation::DrawHammer(250, 300);
 
 }

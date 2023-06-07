@@ -25,6 +25,8 @@ private:
 	static float animx, animy, angle; //ハンマーを動かす変数
 	static float time;  //ハンマーの動きを止める変数
 	static int flg;     //ハンマーの上げ下げ切り替え
+	static int StrongSE, NormalSE, WeakSE, MissSE, MissBGM;
+	static bool SEflg, BGMflg;
 
 public:
 	//HammerAnimation();
