@@ -1,14 +1,26 @@
 #pragma once
+#include <string>
 
-struct RankingData                            // ランキングデータ構造体
+class Ranking
 {
+public:
+	struct RANKING_DATA{
 	int  no;
-	char name[11];
-	long score;
+	std::string name;
+	long int score;
+	};
+private:
+	RANKING_DATA rankingData[5];
+
+public:
+	void ReadRanking();
+	void WriteRanking(std::string _name, long int _score);
+
+	RANKING_DATA GetRankingData(int index) { return rankingData[index]; }
 };
 
-void SortRanking(void);  // ランキングの並べ替え
-int SaveRanking(void);   // ランキングデータの保存
-int ReadRanking(void);   // ランキングデータの読込
+//void SortRanking(void);  // ランキングの並べ替え
+//int SaveRanking(void);   // ランキングデータの保存
+//int ReadRanking(void);   // ランキングデータの読込
 
-int LoadRankingImage();                        //ランキング画像読み込み
+//int LoadRankingImage();                        //ランキング画像読み込み
