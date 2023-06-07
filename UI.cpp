@@ -5,10 +5,10 @@
 void UI::CountDown()  const 
 {
 	//ƒ^ƒCƒ€‚Ì‰ÁZˆ—
-	if (--gWaitTime < 30) {
-	}
-	SetFontSize(35);
-	DrawFormatString(990, 60, 0xffffff, "Time: %d", /*120-*/gWaitTime / 60);
+	/*if (--gWaitTime < 30) {
+	}*/
+	gWaitTime--;
+	
 }
 
 int UI::Score()  
@@ -43,4 +43,9 @@ void UI::DrawScore()
 int UI::GetTime() 
 {
 	return gWaitTime;
+}
+
+void UI::DrawCountDown() {
+	SetFontSize(35);
+	DrawFormatString(990, 60, 0xffffff, "Time: %d", /*120-*/gWaitTime / 60);
 }
