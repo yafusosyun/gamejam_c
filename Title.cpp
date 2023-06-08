@@ -11,6 +11,7 @@
 Title::Title()
 {
     CursorY = 0;
+    TitileFont = CreateFontToHandle("UD デジタル 教科書体 NP-B", 80, 7, DX_FONTTYPE_ANTIALIASING_EDGE, -1, 3);
     Font= CreateFontToHandle("UD デジタル 教科書体 NP-B", FontSiz, 7, DX_FONTTYPE_ANTIALIASING_EDGE,-1,3);
     TitleImage = LoadGraph("images/Title.png");
     CursorImage = LoadGraph("images/cursor.png");
@@ -61,12 +62,11 @@ void Title::Draw() const
 {
     DrawGraph(0, 0, TitleImage, FALSE);
 
-    DrawStringToHandle(static_cast<int>(WINDOW_CENTER) + 15, FontSiz, "タイトル", 0xffffff, Font);
+    DrawStringToHandle(static_cast<int>(WINDOW_CENTER) + 15, 70, "タイトル", 0xffffff, TitileFont);
 
     DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 300 + FontSiz, "ゲームスタート", 0x4169E1, Font,0xffffff);
     DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 400 + FontSiz, "ランキング", 0x4169E1, Font, 0xffffff);
     DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 500 + FontSiz, "ゲームを終わる", 0x4169E1, Font, 0xffffff);
 
-    //DrawCircle(static_cast<int>(WINDOW_CENTER)-30, CursorY * 100 + (320+FontSiz), 20, 0xff0000, TRUE);
     DrawRotaGraph(static_cast<int>(WINDOW_CENTER) - 30, CursorY * 100 + (330 + FontSiz), 1.0, M_PI / 2, CursorImage, TRUE, FALSE);
 }

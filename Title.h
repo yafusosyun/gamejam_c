@@ -7,6 +7,7 @@ class Title :
 private:
 	int CursorY;  //カーソルの座標
 	int Font;     //フォント
+	int TitileFont; //タイトル用フォント
 	const int FontSiz = 65;  //フォントサイズ
 	int TitleImage;  //タイトル画像
 	int CursorImage; //カーソル画像
