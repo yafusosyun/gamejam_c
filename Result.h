@@ -5,6 +5,7 @@ class Result : public AbstractScene {
 private:
 	int Score, Comp, Score1;
 	bool flg;
+	int ResultImg;
 
 public:
 	Result(int score,int comp);

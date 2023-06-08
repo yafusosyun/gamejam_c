@@ -12,28 +12,6 @@
 *************************/
 
 
-/********************
-プログラムの開始
-***************************/
-//int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hprevInstance, _In_ LPSTR lpCmdLine, _In_
-//	int nCmdShow)
-//{
-//  
-//	ChangeWindowMode(TRUE); // ウィンドウモード設定
-//	if (DxLib_Init() == -1) return -1; // DXライブラリ初期化処理
-//
-//	//画像読込関数の呼び出し
-//	if (LoadImages() == -1) return -1;
-//
-//	nail();
-//
-//
-//	WaitKey(); // 結果を見るためにキー待ち
-//	
-//
-//	DxLib_End(); // DXライブラリ使用の終了処理
-//	return 0; // ソフトの終了
-//}
 
 void Nail::Init() {
 	count = 0;
@@ -210,8 +188,6 @@ void Nail::nail(void)
 		break;
 			
 	}
-	DrawFormatString(50, 600, 0xffffff, "miss%d", miss);
-	DrawFormatString(50, 650, 0xffffff, "count%d", count);
 }
 
 void Nail::Draw() {

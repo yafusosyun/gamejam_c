@@ -40,6 +40,10 @@ bool HammerAnimation::SelectAnimation(int select, Direction direction)
 	if (select == 2)
 	{
 		HitAnim(0.4, 40, 0.1, 10, direction);
+		if (SEflg) {
+			PlaySoundMem(StrongSE, DX_PLAYTYPE_BACK, TRUE);
+			SEflg = false;
+		}
 	}
 	if (select == 3)
 	{
@@ -48,10 +52,18 @@ bool HammerAnimation::SelectAnimation(int select, Direction direction)
 	if (select == 1)
 	{
 		HitAnim(0.1, 10, 0.04, 4, direction);
+		if (SEflg) {
+			PlaySoundMem(NormalSE, DX_PLAYTYPE_BACK, TRUE);
+			SEflg = false;
+		}
 	}
 	if (select == 0)
 	{
 		MissAnimation(direction);
+		if (SEflg) {
+			PlaySoundMem(MissSE, DX_PLAYTYPE_BACK, TRUE);
+			SEflg = false;
+		}
 	}
 
 	if (flg == 3)
@@ -60,6 +72,7 @@ bool HammerAnimation::SelectAnimation(int select, Direction direction)
 		animy = 0;
 		angle = 0;
 		flg = 0;
+		SEflg = true;
 		return false;
 	}
 	else {

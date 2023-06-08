@@ -32,6 +32,7 @@ public:
     static int GetPadThumbLX() { return Input.ThumbLX; }
     static int GetPadThumbLY() { return Input.ThumbLY; }
     static int GetFlgY() { return flgY; }
+    static int GetFlgX() { return flgX; }
     //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½uŠÔ
     static bool OnClick(int inputKey)
     {

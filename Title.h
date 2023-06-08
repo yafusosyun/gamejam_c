@@ -10,6 +10,8 @@ private:
 	const int FontSiz = 65;  //フォントサイズ
 	int TitleImage;  //タイトル画像
 	int CursorImage; //カーソル画像
+	int CursorSE;
+	int DecisionSE;
 
 public:
 	Title();

@@ -28,7 +28,7 @@ AbstractScene* Timing::Update() {
 	/*PadInput::UpdateKey();*/
 
 	//Aボタンを押すまで0～100を行き来する
-	if (PadInput::OnClick(XINPUT_BUTTON_A) == 0) {
+	if (PadInput::OnClick(XINPUT_BUTTON_B) == 0) {
 		buttonflg = false;
 		//0 -> 100
 		if (gauge < 100 && numgaugeflg == true && gaugeflg == true) {
@@ -98,9 +98,6 @@ AbstractScene* Timing::Update() {
 			//それ以外ならmiss
 			else {
 				judge = 0;
-				/*if (speed > 1) {
-					speed -= 1;
-				}*/
 				comp -= 3;
 				if (comp < 0) {
 					comp = 0;
@@ -121,24 +118,25 @@ AbstractScene* Timing::Update() {
 }
 
 void Timing::Draw() const {
-	DrawBox(20, 100, 20 + bar, 150, 0xff0000, true);
-	DrawBox(goodleft + 20, 100, goodright + 20, 150, 0x00ff00, true);
-	DrawBox(greatleft + 20, 100, greatright + 20, 150, 0xff00ff, true);
-	DrawTriangle((gauge * (bar / 100)), 80, (gauge * (bar / 100)) + 40, 80, (gauge * (bar / 100)) + 20, 100, 0xffffff, true);
-	DrawBox((gauge * (bar / 100)) + 20 - 2, 100, (gauge * (bar / 100)) + 20 + 2, 150, 0xffffff, true);
-	DrawFormatString(990, 400, 0xffffff, "%d %%", comp);
-	DrawString(990, 430, "完成度", 0xffffff);
+	DrawBox(20, 100, 20 + bar, 150, 0x00ff55, TRUE);
+	DrawBox(goodleft + 20, 100, goodright + 20, 150, 0xffff00, TRUE);
+	DrawBox(greatleft + 20, 100, greatright + 20, 150, 0xff0000, TRUE);
+	DrawBox(20, 100, 20 + bar, 150, 0x000000, FALSE);
+	DrawTriangle((gauge * (bar / 100)), 80, (gauge * (bar / 100)) + 40, 80, (gauge * (bar / 100)) + 20, 100, 0xffffff, TRUE);
+	DrawBox((gauge * (bar / 100)) + 20 - 2, 100, (gauge * (bar / 100)) + 20 + 2, 150, 0xffffff, TRUE);
+	DrawFormatString(990, 430, 0xffffff, "%d %%", comp);
+	DrawString(990, 400, "完成度", 0xffffff);
 	SetFontSize(100);
 	switch (judge)
 	{
 	case 0:
-		DrawString(20, 300, "Miss", 0xffffff);
+		DrawString(20, 300, "Miss...", 0x00ff55);
 		break;
 	case 1:
-		DrawString(20, 300, "Good", 0xffffff);
+		DrawString(20, 300, "Good", 0xffff00);
 		break;
 	case 2:
-		DrawString(20, 300, "Great", 0xffffff);
+		DrawString(20, 300, "Great!!", 0xff0000);
 		break;
 	default:
 		break;

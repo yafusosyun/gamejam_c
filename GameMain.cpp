@@ -51,6 +51,7 @@ AbstractScene* GameMain::Update() {
 void GameMain::Draw() const {
 	DrawGraph(-100, 0, MainImg, FALSE);
 	DrawBox(950, 0, 1280, 720, 0x000000, TRUE);
+	DrawString(20, 650, "Bボタンでハンマーを振る", 0xff0000);
 	timing.Draw();
 	ui.DrawScore();
 	ui.DrawCountDown();

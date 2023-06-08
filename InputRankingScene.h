@@ -16,8 +16,8 @@ private:
 	const char keyboard[5][14] = { "ABCDEFGHIJKLM" ,"NOPQRSTUVWXYZ" ,"abcdefghijklm" ,"nopqrstuvwxyz" ,"0123456789<" };
 
 	int image;
-	//int TitleSE;
-	//int TitleSE2;
+	int cursorSE;
+	int decisionSE;
 
 public:
 	InputRankingScene(int _score);

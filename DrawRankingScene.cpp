@@ -10,8 +10,7 @@ DrawRankingScene::DrawRankingScene(int _score) {
 		rankingData[i] = ranking.GetRankingData(i);
 	}
 
-	image = LoadGraph("Resources/images/Ranking.png");
-	//TitleSE2 = LoadSoundMem("Resources/sounds/decision.wav");
+	image = LoadGraph("images/GameMain.png");
 }
 
 AbstractScene* DrawRankingScene::Update() {
@@ -25,16 +24,15 @@ void DrawRankingScene::Draw() const {
 	DrawGraph(0, 0, image, TRUE);
 	
 	SetFontSize(60);
-	DrawString(140, 100, "RANKING", 0xffffff);
+	DrawString(140, 100, "RANKING", 0x000000);
 
 	SetFontSize(40);
 	for (int i = 0; i < 5; i++) {
-		DrawFormatString(92, 300 + 50 * i, 0xffffff, "%d %4s ", rankingData[i].no, rankingData[i].name.c_str());
-		DrawFormatString(390, 300 + 50 * i, 0xffffff, "%5ld", rankingData[i].score);
+		DrawFormatString(92, 250 + 50 * i, 0x000000, "%d %4s ", rankingData[i].no, rankingData[i].name.c_str());
+		DrawFormatString(390, 250 + 50 * i, 0x000000, "%5ld", rankingData[i].score);
 	}
 
 	SetFontSize(32);
-	DrawString(280, 610, "A  PUSH", 0xffffff);
+	DrawString(280, 610, "Aボタンで戻る", 0x000000);
 }
 
-//シーンの変更処理

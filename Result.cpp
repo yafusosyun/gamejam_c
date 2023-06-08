@@ -13,6 +13,7 @@ Result::Result(int score, int comp) {
 	Score1 = score;
 	Comp = comp;
 	flg = true;
+	ResultImg = LoadGraph("images/GameMain.png");
 };
 
 AbstractScene* Result::Update() {	//描画以外の更新・変数の値の初期化・前の画面への上書き
@@ -37,11 +38,15 @@ AbstractScene* Result::Update() {	//描画以外の更新・変数の値の初期化・前の画面へ
 
 void Result::Draw()const		//描画に関することだけ
 {
-	DrawFormatString(20, 110, GetColor(255, 255, 255), "スコア:%d",Score1);
-	DrawFormatString(20, 140, GetColor(255, 255, 255), "完成度:%d%%",Comp);
-	DrawFormatString(20, 170, GetColor(255, 255, 255), "総合得点:%d",Score);
+	DrawGraph(0, 0, ResultImg, TRUE);
+	SetFontSize(100);
+	DrawString(400, 100, "リザルト", 0x000000);
+	SetFontSize(50);
+	DrawFormatString(450, 230, GetColor(255, 255, 255), "スコア:%d",Score1);
+	DrawFormatString(450, 280, GetColor(255, 255, 255), "完成度:%d%%",Comp);
+	DrawFormatString(350, 330, GetColor(255, 255, 255), "総合得点:%d × %d%% = %d点", Score1, Comp, Score);
 
-	DrawFormatString(20, 200, GetColor(255, 255, 255), "-- キーでランキングへ --");
+	DrawFormatString(350, 400, GetColor(255, 255, 255), "-- Aボタンでランキングへ --");
 }
 
 void Result::getResult(int score, int comp) {
