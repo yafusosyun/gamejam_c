@@ -12,6 +12,7 @@ private:
 	int CursorImage; //カーソル画像
 	int CursorSE;
 	int DecisionSE;
+	int TitleFont;
 
 public:
 	Title();
@@ -19,6 +20,7 @@ public:
 	{
 		DeleteFontToHandle(Font);
 		DeleteGraph(TitleImage);
+		DeleteFontToHandle(TitleFont);
 	}
 
 	//描画以外の更新を実装

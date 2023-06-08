@@ -12,6 +12,7 @@ Timing timing;
 UI ui;
 Nail nail;
 bool f = false;
+int GameMain::BGM;
 
 GameMain::GameMain() {
 	timing.Init();
@@ -19,10 +20,17 @@ GameMain::GameMain() {
 	nail.Init();
 	HammerAnimation::AnimInit();
 	MainImg = LoadGraph("images/GameMain.png");
+	BGM = LoadSoundMem("BGM/MainBGM.mp3");
 }
 
 AbstractScene* GameMain::Update() {
-	
+
+	if (CheckSoundMem(BGM) == 0)
+	{
+		PlaySoundMem(BGM, DX_PLAYTYPE_LOOP, TRUE);
+	}
+
+
 	timing.Update();
 
 	ui.CountDown();
