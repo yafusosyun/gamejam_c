@@ -3,6 +3,7 @@
 #include "GameMain.h"
 #include "GameEnd.h"
 #include "Ranking.h"
+#include "DrawRankingScene.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -11,26 +12,30 @@
 Title::Title()
 {
     CursorY = 0;
-    TitileFont = CreateFontToHandle("UD ƒfƒWƒ^ƒ‹ ‹³‰È‘‘Ì NP-B", 80, 7, DX_FONTTYPE_ANTIALIASING_EDGE, -1, 3);
-    Font= CreateFontToHandle("UD ƒfƒWƒ^ƒ‹ ‹³‰È‘‘Ì NP-B", FontSiz, 7, DX_FONTTYPE_ANTIALIASING_EDGE,-1,3);
+    TitileFont = CreateFontToHandle("UD ï¿½fï¿½Wï¿½^ï¿½ï¿½ ï¿½ï¿½ï¿½Èï¿½ï¿½ï¿½ NP-B", 80, 7, DX_FONTTYPE_ANTIALIASING_EDGE, -1, 3);
+    Font= CreateFontToHandle("UD ï¿½fï¿½Wï¿½^ï¿½ï¿½ ï¿½ï¿½ï¿½Èï¿½ï¿½ï¿½ NP-B", FontSiz, 7, DX_FONTTYPE_ANTIALIASING_EDGE,-1,3);
     TitleImage = LoadGraph("images/Title.png");
     CursorImage = LoadGraph("images/cursor.png");
+    CursorSE = LoadSoundMem("SE/cursor.mp3");
+    DecisionSE = LoadSoundMem("SE/decision.mp3");
 }
 
 AbstractScene* Title::Update()
 {
-    //‰ºˆÚ“®
+    //ï¿½ï¿½ï¿½Ú“ï¿½
     if (PadInput::GetFlgY() == 0 && PadInput::GetPadThumbLY()< -MARGIN)
     {
+        PlaySoundMem(CursorSE, DX_PLAYTYPE_BACK, TRUE);
         ++CursorY;
         if (2 < CursorY)
         {
             CursorY = 0;
         }
     }
-    //ãˆÚ“®
+    //ï¿½ï¿½Ú“ï¿½
     if (PadInput::GetFlgY() == 0 && MARGIN < PadInput::GetPadThumbLY())
     {
+        PlaySoundMem(CursorSE, DX_PLAYTYPE_BACK, TRUE);
         --CursorY;
         if (CursorY < 0)
         {
@@ -38,18 +43,20 @@ AbstractScene* Title::Update()
         }
     }
 
-    //Bƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½
+    //Bï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½
     if (PadInput::OnClick(XINPUT_BUTTON_B) == 1)
     {
+        PlaySoundMem(DecisionSE, DX_PLAYTYPE_BACK, TRUE);
+
         switch (CursorY)
         {
-        case 0:/*ƒQ[ƒ€ƒXƒ^[ƒg*/;
+        case 0:/*ï¿½Qï¿½[ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½g*/;
             return new GameMain();
             break;
-        case 1:/*ƒ‰ƒ“ƒLƒ“ƒO*/
-            return this;
+        case 1:/*ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½O*/
+            return new DrawRankingScene(-1);
             break;
-        case 2:/*ƒQ[ƒ€ƒGƒ“ƒh*/
+        case 2:/*ï¿½Qï¿½[ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½h*/
             return new GameEnd();
             break;
         }
@@ -62,11 +69,11 @@ void Title::Draw() const
 {
     DrawGraph(0, 0, TitleImage, FALSE);
 
-    DrawStringToHandle(static_cast<int>(WINDOW_CENTER) + 15, 70, "ƒ^ƒCƒgƒ‹", 0xffffff, TitileFont);
+    DrawStringToHandle(static_cast<int>(WINDOW_CENTER) + 15, 70, "Worclavo", 0xffffff, TitileFont);
 
-    DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 300 + FontSiz, "ƒQ[ƒ€ƒXƒ^[ƒg", 0x4169E1, Font,0xffffff);
-    DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 400 + FontSiz, "ƒ‰ƒ“ƒLƒ“ƒO", 0x4169E1, Font, 0xffffff);
-    DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 500 + FontSiz, "ƒQ[ƒ€‚ğI‚í‚é", 0x4169E1, Font, 0xffffff);
+    DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 300 + FontSiz, "ï¿½Qï¿½[ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½g", 0x4169E1, Font,0xffffff);
+    DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 400 + FontSiz, "ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½O", 0x4169E1, Font, 0xffffff);
+    DrawStringToHandle(static_cast<int>(WINDOW_CENTER), 500 + FontSiz, "ï¿½Qï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½", 0x4169E1, Font, 0xffffff);
 
     DrawRotaGraph(static_cast<int>(WINDOW_CENTER) - 30, CursorY * 100 + (330 + FontSiz), 1.0, M_PI / 2, CursorImage, TRUE, FALSE);
 }

@@ -2,13 +2,18 @@
 #include "DxLib.h"
 #include "Timing.h"
 
+void UI::Init() {
+	gWaitTime = 600;
+	gScore = 0;
+}
+
 void UI::CountDown()  const 
 {
 	//ƒ^ƒCƒ€‚Ì‰ÁZˆ—
-	if (--gWaitTime < 30) {
-	}
-	SetFontSize(35);
-	DrawFormatString(990, 60, 0xffffff, "Time: %d", /*120-*/gWaitTime / 60);
+	/*if (--gWaitTime < 30) {
+	}*/
+	gWaitTime--;
+	
 }
 
 int UI::Score()  
@@ -38,9 +43,15 @@ void UI::DrawScore()
 	SetFontSize(50);
 	DrawFormatString(990, 290, 0xffffff, "%d", gScore);
 	DrawString(990, 230, "Score", 0xffffff);
+	
 }
 
 int UI::GetTime() 
 {
 	return gWaitTime;
+}
+
+void UI::DrawCountDown() {
+	SetFontSize(35);
+	DrawFormatString(990, 60, 0xffffff, "Time: %d", /*120-*/gWaitTime / 60);
 }

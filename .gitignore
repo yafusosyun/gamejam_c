@@ -358,9 +358,9 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 .vs/
-.vs/gamejam_c/v17/
 
+git rm --cached.vs
+.vs/
+
+git rm --cachedx64
 x64/
-x64/Debug/
-x64/Debug/vc143.idb
-x64/Debug/vc143.pdb

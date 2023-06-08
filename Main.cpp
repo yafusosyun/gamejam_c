@@ -3,6 +3,12 @@
 #include "PadInput.h"
 #include "fps.h"
 #include "HammerAnimation.h"
+#include "UI.h"
+#include "GameMain.h"
+#include "nail.h"
+#include "InputRankingScene.h"
+#include "DrawRankingScene.h"
+#include "Ranking.h"
 #include "Title.h"
 
 #define _SCREEN_HEIGHT_ 720
@@ -33,14 +39,19 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		return -1;
 	}
 
-	SceneManager sceneMng(new Title);
+
+
+	SceneManager sceneMng(dynamic_cast<AbstractScene*>(new Title())); 
+
+
+	//SceneManager sceneMng(/*new Title*/);
+
 	HammerAnimation::AnimInit();
-	bool f = false;
-	bool h = false;
 
 	while (sceneMng.Update() != nullptr && ProcessMessage() != -1 && !PadInput::OnClick(XINPUT_BUTTON_BACK))
 	{
 		ClearDrawScreen();
+
 		PadInput::UpdateKey();
 		PadInput::StickControl();
 		
@@ -49,20 +60,7 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 
 		sceneMng.Draw();
 
-		HammerAnimation::DrawHammer(500, 300);
-		if (PadInput::OnClick(XINPUT_BUTTON_A)) {
-			f = true;
-		}
-		if (PadInput::OnClick(XINPUT_BUTTON_B)) {
-			h = true;
-		}
-		if (f) {
-			f = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Right);
-		}
-		if (h) {
-			h = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Left);
-		}
-
+		
 		//â∫ï˚å¸
 		if (PadInput::flgY == 0 && PadInput::inputY < -MARGIN) {
 			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
@@ -71,14 +69,10 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		if (PadInput::flgY == 0 && PadInput::inputY > MARGIN) {
 			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
 		}
-		//ç∂ï˚å¸
-		if (PadInput::flgX == 0 && PadInput::inputX < -MARGIN) {
-			DrawString(0, 20, "ç∂", 0xffffff);
-		}
-		//âEï˚å¸
-		if (PadInput::flgX == 0 && PadInput::inputX > MARGIN) {
-			DrawString(0, 20, "âE", 0xffffff);
-		}
+
+		/*sceneMng.Draw();*/
+		//sceneMng.Draw();
+
 		
 		fps::FpsControll_Wait();
 		ScreenFlip();

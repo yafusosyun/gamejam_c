@@ -13,7 +13,14 @@
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Ranking.cpp" />
+
+    <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="GameEnd.cpp" />
     <ClCompile Include="Result.cpp" />
+    <ClCompile Include="nail.cpp" />
+
+    
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Keyboard.h" />
@@ -21,6 +28,10 @@
     <ClInclude Include="fps.h" />
     <ClInclude Include="GameMain.h" />
     <ClInclude Include="HammerAnimation.h" />
+    <ClCompile Include="InputRankingScene.cpp" />
+    <ClCompile Include="DrawRankingScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="GameEnd.h" />
     <ClInclude Include="PadInput.h" />
     <ClInclude Include="SceneManager.h" />
@@ -29,5 +40,56 @@
     <ClInclude Include="UI.h" />
     <ClInclude Include="Ranking.h" />
     <ClInclude Include="Result.h" />
+
+    <ClInclude Include="GameMain.h" />
+    <ClInclude Include="Title.h" />
+    <ClCompile Include="UI.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="PadInput.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClInclude Include="GameEnd.h" />
+    <ClInclude Include="nail.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UI.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClCompile Include="Ranking.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Retult.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClInclude Include="PadInput.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Ranking.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Result.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="InputRankingScene.h" />
+    <ClInclude Include="DrawRankingScene.h" />
+  </ItemGroup>
+
 </Project>

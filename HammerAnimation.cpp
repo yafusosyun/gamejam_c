@@ -6,41 +6,64 @@ float HammerAnimation::pox, HammerAnimation::poy;
 float HammerAnimation::animx, HammerAnimation::animy, HammerAnimation::angle;
 float HammerAnimation::time;
 int HammerAnimation::flg;
+int HammerAnimation::StrongSE, HammerAnimation::NormalSE, HammerAnimation::WeakSE;
+int HammerAnimation::MissSE, HammerAnimation::MissBGM;
+bool HammerAnimation::SEflg, HammerAnimation::BGMflg;
 
 void HammerAnimation::AnimInit()
 {
+
 	animx = 0;
 	animy = 0;
 	angle = 0;
 	flg = 0;
 	time = 0;
-	HammerImage = LoadGraph("C:/Users/sinzato shuto/Pictures/ÉgÉâÉìÉv.jfif");
+	HammerImage = LoadGraph("images/Hammer.png");
+	StrongSE = LoadSoundMem("Hammer_SE/StrongSE.mp3");
+	NormalSE = LoadSoundMem("Hammer_SE/NormalSE.mp3");
+	WeakSE = LoadSoundMem("Hammer_SE/WeakSE.mp3");
+	MissSE = LoadSoundMem("Hammer_SE/MissSE.mp3");
+	MissBGM = LoadSoundMem("Hammer_SE/MissBGM.mp3");
+	SEflg = true;
+	BGMflg = true;
 }
 
 void HammerAnimation::DrawHammer(float x, float y)
 {
 	pox = x;
 	poy = y;
-	DrawRotaGraph(pox + animx, poy + animy, 0.3, angle, HammerImage, TRUE);
+	DrawRotaGraph(pox + animx, poy + animy, 0.5, angle, HammerImage, TRUE);
 }
 
-bool HammerAnimation::SelectAnimation(AnimSelect select, Direction direction)
+bool HammerAnimation::SelectAnimation(int select, Direction direction)
 {
-	if (select == AnimSelect::Strong)
+	if (select == 2)
 	{
 		HitAnim(0.4, 40, 0.1, 10, direction);
+		if (SEflg) {
+			PlaySoundMem(StrongSE, DX_PLAYTYPE_BACK, TRUE);
+			SEflg = false;
+		}
 	}
-	if (select == AnimSelect::Normal)
+	if (select == 3)
 	{
 		HitAnim(0.25, 25, 0.1, 10, direction);
 	}	
-	if (select == AnimSelect::Weak)
+	if (select == 1)
 	{
 		HitAnim(0.1, 10, 0.04, 4, direction);
+		if (SEflg) {
+			PlaySoundMem(NormalSE, DX_PLAYTYPE_BACK, TRUE);
+			SEflg = false;
+		}
 	}
-	if (select == AnimSelect::Miss)
+	if (select == 0)
 	{
 		MissAnimation(direction);
+		if (SEflg) {
+			PlaySoundMem(MissSE, DX_PLAYTYPE_BACK, TRUE);
+			SEflg = false;
+		}
 	}
 
 	if (flg == 3)
@@ -49,6 +72,7 @@ bool HammerAnimation::SelectAnimation(AnimSelect select, Direction direction)
 		animy = 0;
 		angle = 0;
 		flg = 0;
+		SEflg = true;
 		return false;
 	}
 	else {
@@ -172,10 +196,15 @@ void HammerAnimation::MissAnimation(Direction direction)
 
 //åƒÇ—èoÇµï˚ó·
 //HammerAnimation::DrawHammer(500, 300);
-//bool f = true;
-//if (PadInput::OnClick(XINPUT_BUTTON_A)) {
+//if (PadInput::OnClick(XINPUT_BUTTON_A) && !h) {
 //	f = true;
 //}
+//if (PadInput::OnClick(XINPUT_BUTTON_B) && !f) {
+//	h = true;
+//}
 //if (f) {
-//	f = HammerAnimation::SelectAnimation(AnimSelect::Strong);
+//	f = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Right);
+//}
+//if (h) {
+//	h = HammerAnimation::SelectAnimation(AnimSelect::Miss, Direction::Left);
 //}
