@@ -17,10 +17,10 @@ void Timing::Init() {
 	buttonflg = false;
 	comp = 0;
 	judgepoint = 50;
-	goodleft = ((bar / 100) * judgepoint - 100);
-	goodright = ((bar / 100) * judgepoint + 100);
-	greatleft = ((bar / 100) * judgepoint - 10);
-	greatright = ((bar / 100) * judgepoint + 10);
+	goodleft = ((bar / 100) * judgepoint - (bar / 6));
+	goodright = ((bar / 100) * judgepoint + (bar / 6));
+	greatleft = ((bar / 100) * judgepoint - (bar / 100));
+	greatright = ((bar / 100) * judgepoint + (bar / 100));
 }
 
 AbstractScene* Timing::Update() {
@@ -51,14 +51,14 @@ AbstractScene* Timing::Update() {
 			fps = 0;
 			gaugeflg = true;
 			judgepoint = GetRand(100);
-			speed = GetRand(5) + 1;
+			speed = GetRand(7) + 1;
 			
-			goodleft = ((bar / 100) * judgepoint - (bar / 10));
+			goodleft = ((bar / 100) * judgepoint - (bar / 6));
 			if (goodleft < 0) {
 				goodleft = 0;
 			}
 
-			goodright = ((bar / 100) * judgepoint + (bar / 10));
+			goodright = ((bar / 100) * judgepoint + (bar / 6));
 			if (goodright > bar) {
 				goodright = bar;
 			}
@@ -88,7 +88,7 @@ AbstractScene* Timing::Update() {
 				}
 			}
 			//åÎç∑10à»ì‡Ç»ÇÁgood
-			else if (judgepoint - 10 < tmp && judgepoint + 10 > tmp) {
+			else if (judgepoint - 17 < tmp && judgepoint + 17 > tmp) {
 				judge = 1;
 				comp += 5;
 				if (comp > 100) {

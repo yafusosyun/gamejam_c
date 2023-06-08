@@ -61,19 +61,6 @@ int WINAPI WinMain(_In_ HINSTANCE ih, _In_opt_ HINSTANCE ioh, _In_ LPSTR il, _In
 		sceneMng.Draw();
 
 		
-		//‰º•ûŒü
-		if (PadInput::flgY == 0 && PadInput::inputY < -MARGIN) {
-			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
-		}
-		//ã•ûŒü
-		if (PadInput::flgY == 0 && PadInput::inputY > MARGIN) {
-			DrawFormatString(0, 0, 0xffffff, "%d", PadInput::inputY);
-		}
-
-		/*sceneMng.Draw();*/
-		//sceneMng.Draw();
-
-		
 		fps::FpsControll_Wait();
 		ScreenFlip();
 	}

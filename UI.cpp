@@ -3,7 +3,7 @@
 #include "Timing.h"
 
 void UI::Init() {
-	gWaitTime = 600;
+	gWaitTime = 3600;
 	gScore = 0;
 }
 

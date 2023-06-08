@@ -45,5 +45,5 @@ void GameEnd::Draw() const
 	DrawStringToHandle(static_cast<int>(WINDOW_CENTER)-240, SentenceY[8] + FontSiz, "Thank you for playing!", 0x4169E1, Font, 0xffffff);
 
 	//デバック
-	DrawFormatString(0, 0, 0xffffff, "%d", Time);
+	//DrawFormatString(0, 0, 0xffffff, "%d", Time);
 }
